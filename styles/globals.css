@@ -1,0 +1,44 @@
+@import url('/fonts/fonts.css');
+
+:root {
+  --font-helvetica-neue-cyr: 'Helvetica Neue Cyr', system-ui, sans-serif;
+  --font-sf-pro: 'SF Pro', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-helvetica-neue-cyr);
+  font-weight: 400;
+}
+
+.font-helvetica-neue-cyr {
+  font-family: var(--font-helvetica-neue-cyr);
+}
+
+.font-helvetica-neue-cyr--thin {
+  font-family: var(--font-helvetica-neue-cyr);
+  font-weight: 100;
+}
+
+.font-helvetica-neue-cyr--roman {
+  font-family: var(--font-helvetica-neue-cyr);
+  font-weight: 400;
+}
+
+.font-helvetica-neue-cyr--medium {
+  font-family: var(--font-helvetica-neue-cyr);
+  font-weight: 500;
+}
+
+.font-sf-pro {
+  font-family: var(--font-sf-pro);
+}
+
+.font-sf-pro--medium {
+  font-family: var(--font-sf-pro);
+  font-weight: 500;
+}
+
+.font-sf-pro--semibold {
+  font-family: var(--font-sf-pro);
+  font-weight: 600;
+}
