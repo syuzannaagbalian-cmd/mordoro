@@ -1,0 +1,67 @@
+/* Scoped styles for mobile block 6 only — imported by MobileFaqFooterSection */
+
+.mobile-block6-root {
+  position: relative;
+  isolation: isolate;
+  contain: layout style paint;
+  overflow-x: clip;
+}
+
+.mobile-block6-trigger {
+  cursor: pointer;
+}
+
+.mobile-block6-trigger:focus-visible {
+  outline: 2px solid #022ec9;
+  outline-offset: 4px;
+}
+
+.mobile-block6-arrow {
+  transition: transform 350ms ease-in-out;
+}
+
+.mobile-block6-arrow--open {
+  transform: scaleY(-1);
+}
+
+.mobile-block6-answer-grid {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 350ms ease-in-out;
+}
+
+.mobile-block6-answer-grid--open {
+  grid-template-rows: 1fr;
+}
+
+.mobile-block6-answer-grid > p {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.mobile-block6-answer-grid--open > p {
+  padding-top: 12px;
+}
+
+.mobile-block6-footer-link,
+.mobile-block6-support-link {
+  cursor: pointer;
+  transition: opacity 150ms ease;
+}
+
+.mobile-block6-footer-link:hover,
+.mobile-block6-support-link:hover {
+  opacity: 0.72;
+}
+
+.mobile-block6-footer-link:focus-visible,
+.mobile-block6-support-link:focus-visible {
+  outline: 2px solid #022ec9;
+  outline-offset: 2px;
+}
+
+.mobile-block6-icon {
+  object-fit: contain;
+  width: auto;
+  height: auto;
+}

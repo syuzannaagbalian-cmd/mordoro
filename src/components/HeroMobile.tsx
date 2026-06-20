@@ -1,6 +1,9 @@
+'use client';
+
 /* eslint-disable @next/next/no-img-element */
 
 import Link from 'next/link';
+import { scrollToSection } from '@/utils/scrollToSection';
 
 const ASSETS = {
   background: '/assets/mobile-background.png',
@@ -290,6 +293,8 @@ export default function HeroMobile() {
             className="hero-mobile-cta relative inline-grid shrink-0 cursor-pointer border-0 bg-transparent p-0 leading-[0] grid-cols-[max-content] grid-rows-[max-content] place-items-start"
             data-node-id="312:1068"
             data-name="button hero block"
+            aria-label="Замовити"
+            onClick={() => scrollToSection('mobile-order-section')}
           >
             <span className="col-start-1 row-start-1 ml-0 mt-0 h-[52px] w-[236px] rounded-[29.5px] bg-[#022ec9]" data-node-id="312:1069" />
             <span className="relative col-start-1 row-start-1 ml-[186px] mt-[9px] size-[33px]" data-node-id="312:1070">

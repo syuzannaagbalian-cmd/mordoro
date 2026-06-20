@@ -1,4 +1,8 @@
+'use client';
+
 /* eslint-disable @next/next/no-img-element */
+
+import { scrollToSection } from '@/utils/scrollToSection';
 
 const ASSETS = {
   background: '/assets/background.png',
@@ -143,12 +147,18 @@ export default function HeroDesktop() {
 
           <div className="relative flex w-full shrink-0 flex-col items-start gap-[42.88px]" data-node-id="210:1433">
             <div className="relative flex w-[357px] shrink-0 flex-col items-start gap-[31px] leading-[0]" data-node-id="210:1431">
-              <div className="relative h-[57px] w-[236px]" data-node-id="210:1338">
+              <button
+                type="button"
+                className="hero-cta-btn relative h-[57px] w-[236px] cursor-pointer border-0 bg-transparent p-0"
+                data-node-id="210:1338"
+                aria-label="Замовити"
+                onClick={() => scrollToSection('desktop-order-section')}
+              >
                 <div
                   className="absolute inset-0 rounded-[29.5px] bg-[#022ec9]"
                   data-node-id="210:1339"
                 />
-                <div className="hero-cta-btn relative flex h-full w-full items-center justify-between pl-[27px] pr-[17px]">
+                <div className="relative flex h-full w-full items-center justify-between pl-[27px] pr-[17px]">
                   <p
                     className="font-helvetica-neue-cyr--medium m-0 text-[16px] not-italic leading-normal text-white [word-break:break-word]"
                     data-node-id="210:1342"
@@ -162,7 +172,7 @@ export default function HeroDesktop() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </button>
 
               <div
                 className="relative inline-grid shrink-0 grid-cols-[max-content] grid-rows-[max-content] place-items-start"

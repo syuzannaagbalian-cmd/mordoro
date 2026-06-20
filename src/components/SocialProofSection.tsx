@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
+import { useCallback } from 'react';
 import { useCustomerCounter } from '@/hooks/useCustomerCounter';
+import { scrollToSection } from '@/utils/scrollToSection';
 
 const ASSETS = {
   bubble: '/assets/block4-bubble.png',
@@ -59,6 +61,10 @@ function BubbleCard({
 
 export default function SocialProofSection() {
   const { count, isAnimating } = useCustomerCounter();
+
+  const scrollToOrderForm = useCallback(() => {
+    scrollToSection('desktop-order-section');
+  }, []);
 
   return (
     <section
@@ -146,6 +152,8 @@ export default function SocialProofSection() {
               type="button"
               className="block4-cta-btn ml-[59px] flex w-[258px] shrink-0 cursor-pointer items-center gap-[24px] border-0 bg-transparent p-0"
               data-node-id="284:264"
+              aria-label="Стань наступним"
+              onClick={scrollToOrderForm}
             >
               <span
                 className="font-helvetica-neue-cyr--roman h-[15px] w-[186px] shrink-0 text-left text-[18px] not-italic uppercase leading-normal text-[#022ec9] [word-break:break-word]"

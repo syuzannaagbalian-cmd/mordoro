@@ -91,6 +91,7 @@ export default function OrderSection() {
 
   return (
     <section
+      id="desktop-order-section"
       className="relative mx-auto h-[809px] w-[1440px] overflow-hidden bg-[#e1e0e7]"
       data-node-id="278:378"
       aria-label="Morldoro order"
