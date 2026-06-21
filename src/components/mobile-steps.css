@@ -1,7 +1,22 @@
-/* Mobile steps block — shared connector axis */
+/* Mobile steps block — shared connector axis and row-relative vertical placement */
 
 .mobile-steps-group {
   --steps-connector-x: calc(142 * var(--mf));
+  --step-1-top: calc(0 * var(--mf));
+  --step-1-h: calc(45.925 * var(--mf));
+  --step-2-top: calc(104.921875 * var(--mf));
+  --step-2-h: calc(47 * var(--mf));
+  --step-3-top: calc(210.921875 * var(--mf));
+  --step-3-h: calc(45 * var(--mf));
+  --connector-h: calc(23.022 * var(--mf));
+  --connector-1-center: calc(
+    var(--step-1-top) + var(--step-1-h) +
+      (var(--step-2-top) - var(--step-1-top) - var(--step-1-h)) / 2
+  );
+  --connector-2-center: calc(
+    var(--step-2-top) + var(--step-2-h) +
+      (var(--step-3-top) - var(--step-2-top) - var(--step-2-h)) / 2
+  );
 }
 
 .mobile-steps-connectors {
@@ -14,8 +29,16 @@
   position: absolute;
   left: var(--steps-connector-x);
   width: calc(1 * var(--mf));
-  height: calc(23.022 * var(--mf));
-  transform: translateX(-50%);
+  height: var(--connector-h);
+  transform: translate(-50%, -50%);
+}
+
+.mobile-steps-connector--after-1 {
+  top: var(--connector-1-center);
+}
+
+.mobile-steps-connector--after-2 {
+  top: var(--connector-2-center);
 }
 
 .mobile-steps-connector img {
@@ -23,7 +46,7 @@
   left: 50%;
   top: 50%;
   display: block;
-  width: calc(23.022 * var(--mf));
+  width: var(--connector-h);
   height: calc(1 * var(--mf));
   max-width: none;
   transform: translate(-50%, -50%) rotate(90deg);

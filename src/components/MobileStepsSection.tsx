@@ -36,9 +36,20 @@ function AssetImg({
   return <img alt={alt} className={className} src={src} />;
 }
 
-function StepConnector({ src, top, nodeId }: { src: string; top: string; nodeId: string }) {
+function StepConnector({
+  src,
+  variant,
+  nodeId,
+}: {
+  src: string;
+  variant: 'after-1' | 'after-2';
+  nodeId: string;
+}) {
   return (
-    <div className="mobile-steps-connector" style={{ top }} data-node-id={nodeId}>
+    <div
+      className={`mobile-steps-connector mobile-steps-connector--${variant}`}
+      data-node-id={nodeId}
+    >
       <AssetImg src={src} alt="" width={23.022} height={1} />
     </div>
   );
@@ -103,7 +114,7 @@ export default function MobileStepsSection() {
           data-node-id="312:1106"
         >
           <p
-            className="font-helvetica-neue-cyr--thin m-0 h-[calc(45.925*var(--mf))] w-[calc(63*var(--mf))] shrink-0 text-[calc(56.766*var(--mf))] not-italic leading-[1.02] tracking-[calc(-3.4059*var(--mf))] text-white"
+            className="mobile-steps-number mobile-steps-number--1 font-helvetica-neue-cyr--thin m-0 h-[calc(45.925*var(--mf))] w-[calc(63*var(--mf))] shrink-0 text-[calc(56.766*var(--mf))] not-italic leading-[1.02] tracking-[calc(-3.4059*var(--mf))] text-white"
             data-node-id="312:1107"
           >
             01
@@ -152,7 +163,7 @@ export default function MobileStepsSection() {
             </p>
           </div>
           <p
-            className="font-helvetica-neue-cyr--thin m-0 h-[calc(47*var(--mf))] w-[calc(63*var(--mf))] shrink-0 text-[calc(56.77*var(--mf))] not-italic leading-[1.02] tracking-[calc(-3.4062*var(--mf))] text-white"
+            className="mobile-steps-number mobile-steps-number--2 font-helvetica-neue-cyr--thin m-0 h-[calc(47*var(--mf))] w-[calc(63*var(--mf))] shrink-0 text-[calc(56.77*var(--mf))] not-italic leading-[1.02] tracking-[calc(-3.4062*var(--mf))] text-white"
             data-node-id="312:1116"
           >
             02
@@ -165,7 +176,7 @@ export default function MobileStepsSection() {
           data-node-id="312:1118"
         >
           <p
-            className="font-helvetica-neue-cyr--thin m-0 h-[calc(45*var(--mf))] w-[calc(63*var(--mf))] shrink-0 text-[calc(56.77*var(--mf))] not-italic leading-[1.02] tracking-[calc(-3.4062*var(--mf))] text-white"
+            className="mobile-steps-number mobile-steps-number--3 font-helvetica-neue-cyr--thin m-0 h-[calc(45*var(--mf))] w-[calc(63*var(--mf))] shrink-0 text-[calc(56.77*var(--mf))] not-italic leading-[1.02] tracking-[calc(-3.4062*var(--mf))] text-white"
             data-node-id="312:1119"
           >
             03
@@ -192,16 +203,8 @@ export default function MobileStepsSection() {
 
         {/* Divider lines — shared vertical axis at --steps-connector-x */}
         <div className="mobile-steps-connectors" aria-hidden>
-          <StepConnector
-            src={ASSETS.line32}
-            top="calc(86.0234375 * var(--mf))"
-            nodeId="312:1124"
-          />
-          <StepConnector
-            src={ASSETS.line33}
-            top="calc(197.0234375 * var(--mf))"
-            nodeId="312:1123"
-          />
+          <StepConnector src={ASSETS.line32} variant="after-1" nodeId="312:1124" />
+          <StepConnector src={ASSETS.line33} variant="after-2" nodeId="312:1123" />
         </div>
       </div>
     </MobileFluidSection>
