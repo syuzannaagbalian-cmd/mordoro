@@ -92,11 +92,10 @@ export default function OrderSection() {
   return (
     <section
       id="desktop-order-section"
-      className="desktop-block desktop-block--order"
+      className="relative mx-auto h-[809px] w-[1440px] overflow-hidden bg-[#e1e0e7]"
       data-node-id="278:378"
       aria-label="Morldoro order"
     >
-      <div className="desktop-block-canvas relative overflow-hidden bg-[#e1e0e7]">
       <div
         className="pointer-events-none absolute left-[-432px] right-[41px] top-[36px] aspect-[4096/1907]"
         data-node-id="278:527"
@@ -425,7 +424,6 @@ export default function OrderSection() {
             </p>
           </div>
         </div>
-      </div>
       </div>
     </section>
   );

@@ -47,11 +47,10 @@ function FeatureIcon({ src, nodeId }: { src: string; nodeId: string }) {
 export default function WhatsIncludedSection() {
   return (
     <section
-      className="desktop-block desktop-block--included"
+      className="relative mx-auto h-[652px] w-[1440px] overflow-hidden bg-[#e1e0e7]"
       data-node-id="280:102"
       aria-label="Що ви отримуєте"
     >
-      <div className="desktop-block-canvas relative overflow-hidden bg-[#e1e0e7]">
       {/* Background ellipse */}
       <div className="pointer-events-none absolute left-[-443px] top-[-145px] flex h-[244.864px] w-[1892.274px] items-center justify-center">
         <div className="flex-none rotate-[1.17deg] skew-x-[-3.8deg]">
@@ -192,7 +191,6 @@ export default function WhatsIncludedSection() {
             </div>
           </div>
         </div>
-      </div>
       </div>
     </section>
   );

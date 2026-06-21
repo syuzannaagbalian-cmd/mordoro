@@ -10,48 +10,47 @@ const DESKTOP_VIEWPORTS = [
 
 const MOBILE_WIDTHS = [320, 375, 390, 414, 430];
 
+const FIGMA_HEIGHTS = {
+  order: 809,
+  included: 652,
+  social: 592,
+  faqMin: 765,
+};
+
 async function auditDesktop(page, viewport) {
   await page.setViewportSize(viewport);
   await page.reload({ waitUntil: 'networkidle' });
   await page.waitForTimeout(400);
 
   return page.evaluate(({ width, height }) => {
-    const hero = document.querySelector('.site-layout--desktop .hero-frame-bg');
     const order = document.getElementById('desktop-order-section');
-    const orderCanvas = order?.querySelector('.desktop-block-canvas');
-    const included = document.querySelector('.desktop-block--included');
-    const social = document.querySelector('.desktop-block--social');
-    const faq = document.querySelector('.desktop-block--faq');
-    const badgeText = document.querySelector('.hero-mobile-badge-text');
+    const included = document.querySelector('[data-node-id="280:102"]');
+    const social = document.querySelector('[data-node-id="284:243"]');
+    const faq = document.querySelector('[data-node-id="284:272"]');
+    const hero = document.querySelector('.site-layout--desktop .hero-frame-bg');
+    const scaledCanvas = document.querySelector('.desktop-block-canvas');
 
-    const nestedVerticalScrollers = [];
-    for (const el of document.querySelectorAll('.site-layout--mobile *')) {
-      const style = getComputedStyle(el);
-      if (style.display === 'none') continue;
-      if (el.classList.contains('mobile-block5-gallery-track')) continue;
-      const oy = style.overflowY;
-      if ((oy === 'auto' || oy === 'scroll') && el.scrollHeight > el.clientHeight + 1) {
-        nestedVerticalScrollers.push(el.className);
-      }
+    function gapAfter(el) {
+      if (!el || !el.nextElementSibling) return null;
+      const a = el.getBoundingClientRect();
+      const b = el.nextElementSibling.getBoundingClientRect();
+      return Math.round(b.top - a.bottom);
     }
-
-    const mobileHero = document.querySelector('.hero-mobile');
-    const mobileHeroRect = mobileHero?.getBoundingClientRect();
 
     return {
       kind: 'desktop',
       viewport: { width, height },
       horizontalOverflow:
         document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
-      heroDesktopUntouched: hero != null,
+      heroDesktopPresent: hero != null,
+      noScaledCanvasWrapper: scaledCanvas == null,
       orderHeight: order?.getBoundingClientRect().height ?? null,
-      orderCanvasHeight: orderCanvas?.getBoundingClientRect().height ?? null,
       includedHeight: included?.getBoundingClientRect().height ?? null,
       socialHeight: social?.getBoundingClientRect().height ?? null,
       faqHeight: faq?.getBoundingClientRect().height ?? null,
-      badgeTextNowrap: badgeText ? getComputedStyle(badgeText).whiteSpace === 'nowrap' : null,
-      mobileHeroWidth: mobileHeroRect?.width ?? null,
-      nestedMobileScrollers: nestedVerticalScrollers.length,
+      gapAfterOrder: gapAfter(order),
+      gapAfterIncluded: gapAfter(included),
+      gapAfterSocial: gapAfter(social),
     };
   }, viewport);
 }
@@ -68,11 +67,12 @@ async function auditMobileWidth(page, width) {
     const sideGap =
       heroRect != null ? Math.max(0, Math.round((viewportWidth - heroRect.width) / 2)) : null;
 
-    let badgeLines = 1;
+    let badgeSingleLine = true;
     if (badgeText) {
-      const lineHeight = parseFloat(getComputedStyle(badgeText).lineHeight) || 1;
-      const textHeight = badgeText.getBoundingClientRect().height;
-      badgeLines = lineHeight > 0 ? Math.round(textHeight / lineHeight) : 1;
+      const style = getComputedStyle(badgeText);
+      badgeSingleLine =
+        style.whiteSpace === 'nowrap' &&
+        badgeText.scrollWidth <= badgeText.clientWidth + 1;
     }
 
     return {
@@ -80,7 +80,7 @@ async function auditMobileWidth(page, width) {
       viewportWidth,
       heroWidth: heroRect?.width ?? null,
       sideGap,
-      badgeSingleLine: badgeLines <= 1,
+      badgeSingleLine,
       badgeNowrap: badgeText ? getComputedStyle(badgeText).whiteSpace === 'nowrap' : null,
       horizontalOverflow:
         document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
@@ -89,16 +89,25 @@ async function auditMobileWidth(page, width) {
 }
 
 function passDesktop(report) {
-  const scale = Math.min(1, report.viewport.width / 1440, report.viewport.height / 900);
-  const expectedOrder = Math.round(809 * scale);
-  const orderOk =
-    report.orderHeight != null && Math.abs(report.orderHeight - expectedOrder) <= 3;
+  const atReference = report.viewport.width >= 1440 && report.viewport.height >= 900;
+  const heightsMatchFigma =
+    Math.abs(report.orderHeight - FIGMA_HEIGHTS.order) <= 1 &&
+    Math.abs(report.includedHeight - FIGMA_HEIGHTS.included) <= 1 &&
+    Math.abs(report.socialHeight - FIGMA_HEIGHTS.social) <= 1 &&
+    report.faqHeight != null &&
+    report.faqHeight >= FIGMA_HEIGHTS.faqMin - 1;
+
+  const noSectionGaps =
+    (report.gapAfterOrder == null || report.gapAfterOrder <= 1) &&
+    (report.gapAfterIncluded == null || report.gapAfterIncluded <= 1) &&
+    (report.gapAfterSocial == null || report.gapAfterSocial <= 1);
+
   return (
-    report.heroDesktopUntouched &&
-    orderOk &&
+    report.heroDesktopPresent &&
+    report.noScaledCanvasWrapper &&
     !report.horizontalOverflow &&
-    report.orderCanvasHeight != null &&
-    report.orderCanvasHeight <= report.orderHeight + 1
+    noSectionGaps &&
+    (atReference ? heightsMatchFigma : report.orderHeight != null && report.orderHeight > 0)
   );
 }
 
