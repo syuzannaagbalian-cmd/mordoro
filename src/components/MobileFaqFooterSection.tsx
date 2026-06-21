@@ -99,7 +99,7 @@ export default function MobileFaqFooterSection() {
 
   return (
     <section
-      className="mobile-block6-root relative mx-auto min-h-[924px] w-[390px] max-w-full bg-gradient-to-b from-[#e1e0e7] to-[#e8d1f2]"
+      className="mobile-block6-root mobile-section-fluid relative min-h-[924px] w-full bg-gradient-to-b from-[#e1e0e7] to-[#e8d1f2]"
       data-node-id="312:1424"
       data-name="блок 6"
       aria-label="FAQ and footer"
@@ -135,7 +135,7 @@ export default function MobileFaqFooterSection() {
 
       <div className="relative z-10 box-border px-[16px] pt-[66px]" data-node-id="312:1466">
         <p
-          className="font-sf-pro--medium m-0 flex h-[78px] w-[358px] max-w-full items-center text-[80px] font-[510] uppercase leading-[1.08] text-black [word-break:break-word]"
+          className="font-sf-pro--medium m-0 flex h-[78px] w-full items-center text-[80px] font-[510] uppercase leading-[1.08] text-black [word-break:break-word]"
           style={SF_VARIATION}
           data-node-id="312:1425"
         >
@@ -143,7 +143,7 @@ export default function MobileFaqFooterSection() {
         </p>
 
         <div
-          className="mt-[58px] flex w-[358px] max-w-full flex-col gap-[20px]"
+          className="mt-[58px] flex w-full flex-col gap-[20px]"
           data-node-id="312:1465"
         >
           {FAQ_ITEMS.map((item) => {
@@ -168,7 +168,7 @@ export default function MobileFaqFooterSection() {
                     data-node-id={item.nodeIds.row}
                   >
                     <span
-                      className={`font-sf-pro--regular m-0 h-[23px] shrink-0 ${item.questionWidth} text-[14px] font-normal leading-[1.02] tracking-[-0.56px] text-black [word-break:break-word]`}
+                      className="font-sf-pro--regular m-0 min-h-[23px] min-w-0 flex-1 text-[14px] font-normal leading-[1.02] tracking-[-0.56px] text-black [word-break:break-word]"
                       style={SF_VARIATION}
                       data-node-id={item.nodeIds.question}
                     >

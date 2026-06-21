@@ -3,6 +3,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import MobileScaleFrame from '@/components/MobileScaleFrame';
 import { useCustomerCounter } from '@/hooks/useCustomerCounter';
 import { scrollToSection } from '@/utils/scrollToSection';
 import './mobile-block5.css';
@@ -128,11 +129,14 @@ export default function MobileSocialProofSection() {
   };
 
   return (
-    <section
-      className="mobile-block5-root relative mx-auto h-[819px] w-[390px] max-w-full bg-[#e1e0e7]"
+    <MobileScaleFrame
+      as="section"
+      designHeight={819}
+      className="mobile-block5-root"
       data-node-id="312:1398"
       data-name="блок 5"
       aria-label="Morldoro social proof"
+      canvasClassName="relative bg-[#e1e0e7]"
     >
       <p
         className="font-sf-pro--light-italic absolute left-0 top-[113px] m-0 flex h-[43px] w-[390px] items-center justify-center text-center text-[32px] italic leading-[1.08] text-[#022ec9] [word-break:break-word]"
@@ -244,6 +248,6 @@ export default function MobileSocialProofSection() {
           </span>
         </button>
       </div>
-    </section>
+    </MobileScaleFrame>
   );
 }

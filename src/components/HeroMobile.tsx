@@ -3,6 +3,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import Link from 'next/link';
+import MobileScaleFrame from '@/components/MobileScaleFrame';
 import { scrollToSection } from '@/utils/scrollToSection';
 
 const ASSETS = {
@@ -63,11 +64,14 @@ function FeatureIconCircle({ src, nodeId }: { src: string; nodeId: string }) {
 
 export default function HeroMobile() {
   return (
-    <div
-      className="hero-mobile relative mx-auto h-[961px] w-[390px] max-w-full overflow-x-clip bg-[#e1e0e7]"
+    <MobileScaleFrame
+      as="div"
+      designHeight={961}
+      className="hero-mobile"
       data-node-id="295:405"
       data-name="Херо блок"
       aria-label="Morldoro hero mobile"
+      canvasClassName="relative overflow-x-clip bg-[#e1e0e7]"
     >
       {/* Background — 312:1024 */}
       <div
@@ -383,6 +387,6 @@ export default function HeroMobile() {
           </div>
         </div>
       </div>
-    </div>
+    </MobileScaleFrame>
   );
 }

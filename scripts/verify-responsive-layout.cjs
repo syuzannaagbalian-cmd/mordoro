@@ -1,6 +1,6 @@
 const { chromium } = require('playwright');
 
-const WIDTHS = [360, 375, 390, 393, 414, 430, 768];
+const WIDTHS = [320, 360, 375, 390, 393, 414, 430, 768];
 
 async function auditWidth(page, width) {
   await page.setViewportSize({ width, height: 900 });
@@ -12,25 +12,23 @@ async function auditWidth(page, width) {
     const desktopLayout = document.querySelector('.site-layout--desktop');
     const mobileStyle = mobileLayout ? getComputedStyle(mobileLayout) : null;
     const desktopStyle = desktopLayout ? getComputedStyle(desktopLayout) : null;
-    const mobileHero = document.querySelector('.hero-mobile');
-    const desktopHero = document.querySelector('.hero-frame-bg');
-    const viewportMeta = document.querySelector('meta[name="viewport"]')?.getAttribute('content') ?? null;
+    const heroFrame = document.querySelector('.hero-mobile');
+    const heroCanvas = document.querySelector('.hero-mobile .mobile-scale-canvas');
+    const heroRect = heroCanvas?.getBoundingClientRect() ?? heroFrame?.getBoundingClientRect();
+    const orderSection = document.getElementById('mobile-order-section');
+
+    const sideGap =
+      heroRect != null ? Math.max(0, Math.round((viewportWidth - heroRect.width) / 2)) : null;
 
     return {
       viewportWidth,
-      viewportMeta,
       scrollWidth: document.documentElement.scrollWidth,
       clientWidth: document.documentElement.clientWidth,
       mobileLayoutDisplay: mobileStyle?.display ?? null,
       desktopLayoutDisplay: desktopStyle?.display ?? null,
-      mobileHeroVisible: !!mobileHero && mobileHero.getBoundingClientRect().width > 0,
-      desktopHeroVisible: !!desktopHero && desktopHero.getBoundingClientRect().width > 0,
-      mobileOrderVisible:
-        !!document.getElementById('mobile-order-section') &&
-        document.getElementById('mobile-order-section').getBoundingClientRect().width > 0,
-      desktopOrderVisible:
-        !!document.getElementById('desktop-order-section') &&
-        document.getElementById('desktop-order-section').getBoundingClientRect().width > 0,
+      heroWidth: heroRect?.width ?? null,
+      sideGap,
+      mobileOrderWidth: orderSection?.getBoundingClientRect().width ?? null,
       horizontalOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
     };
   }, width);
@@ -38,24 +36,25 @@ async function auditWidth(page, width) {
 
 function pass(report) {
   const isMobile = report.viewportWidth < 768;
-  if (isMobile) {
+  if (!isMobile) {
     return (
-      report.mobileLayoutDisplay === 'block' &&
-      report.desktopLayoutDisplay === 'none' &&
-      report.mobileHeroVisible &&
-      !report.desktopHeroVisible &&
-      report.mobileOrderVisible &&
-      !report.desktopOrderVisible &&
+      report.mobileLayoutDisplay === 'none' &&
+      report.desktopLayoutDisplay === 'block' &&
       !report.horizontalOverflow
     );
   }
+
+  const expectedHeroWidth = Math.min(report.viewportWidth, 430);
+  const heroFills =
+    report.heroWidth != null && Math.abs(report.heroWidth - expectedHeroWidth) <= 2;
+  const noSideGap = report.sideGap != null && report.sideGap <= 1;
+
   return (
-    report.mobileLayoutDisplay === 'none' &&
-    report.desktopLayoutDisplay === 'block' &&
-    !report.mobileHeroVisible &&
-    report.desktopHeroVisible &&
-    !report.mobileOrderVisible &&
-    report.desktopOrderVisible
+    report.mobileLayoutDisplay === 'block' &&
+    report.desktopLayoutDisplay === 'none' &&
+    heroFills &&
+    noSideGap &&
+    !report.horizontalOverflow
   );
 }
 

@@ -3,8 +3,7 @@
 .mobile-block6-root {
   position: relative;
   isolation: isolate;
-  contain: layout style paint;
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 .mobile-block6-trigger {

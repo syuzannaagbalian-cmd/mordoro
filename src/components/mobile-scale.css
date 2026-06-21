@@ -1,0 +1,29 @@
+/* Mobile viewport scaling: 390px Figma canvas → fill real phone width (320–430px) */
+
+.mobile-scale-frame {
+  --mobile-design-w: 390;
+  --mobile-max-w: 430;
+  --mobile-scale: min(calc(100vw / (var(--mobile-design-w) * 1px)), calc((var(--mobile-max-w) * 1px) / (var(--mobile-design-w) * 1px)));
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  height: calc(var(--mobile-design-h) * 1px * var(--mobile-scale));
+}
+
+.mobile-scale-canvas {
+  box-sizing: border-box;
+  width: calc(var(--mobile-design-w) * 1px);
+  height: calc(var(--mobile-design-h) * 1px);
+  margin-inline: auto;
+  transform: scale(var(--mobile-scale));
+  transform-origin: top center;
+  overflow-x: clip;
+}
+
+.mobile-section-fluid {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}

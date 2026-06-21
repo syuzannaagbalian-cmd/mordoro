@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
+import MobileScaleFrame from '@/components/MobileScaleFrame';
+
 const ASSETS = {
   composition: '/assets/mobile-block4-composition.png',
   headingArrow: '/assets/mobile-block4-heading-arrow.svg',
@@ -60,11 +62,13 @@ function HeadingArrow({ nodeId }: { nodeId: string }) {
 
 export default function MobileWhatsIncludedSection() {
   return (
-    <section
-      className="relative mx-auto h-[923px] w-[390px] max-w-full overflow-x-clip bg-[#e1e0e7]"
+    <MobileScaleFrame
+      as="section"
+      designHeight={923}
       data-node-id="312:1204"
       data-name="блок 4"
       aria-label="Що ви отримуєте"
+      canvasClassName="relative overflow-x-clip bg-[#e1e0e7]"
     >
       {/* Product composition — 312:1396 */}
       <div className="pointer-events-none absolute left-[-112px] top-[150px] flex h-[439.897px] w-[1244.732px] items-center justify-center">
@@ -191,6 +195,6 @@ export default function MobileWhatsIncludedSection() {
           </div>
         </div>
       </div>
-    </section>
+    </MobileScaleFrame>
   );
 }

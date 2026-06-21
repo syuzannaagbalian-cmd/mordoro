@@ -36,17 +36,29 @@ body {
 .site-layout--mobile {
   display: block;
   width: 100%;
-  max-width: 100vw;
+  max-width: 100%;
   overflow-x: hidden;
   background-color: #e1e0e7;
   isolation: isolate;
+  box-sizing: border-box;
 }
 
 .site-layout--mobile > section,
-.site-layout--mobile > .hero-mobile {
+.site-layout--mobile > .hero-mobile,
+.site-layout--mobile > .mobile-scale-frame,
+.site-layout--mobile > .mobile-section-fluid {
+  width: 100%;
   max-width: 100%;
-  margin-inline: auto;
-  overflow-x: clip;
+  margin-inline: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+@media (max-width: 767px) {
+  html,
+  body {
+    background-color: #e1e0e7;
+  }
 }
 
 .site-layout--desktop {
@@ -62,12 +74,6 @@ body {
     display: block;
     min-width: 1440px;
     width: 100%;
-  }
-}
-
-@media (max-width: 767px) {
-  body {
-    background-color: #e1e0e7;
   }
 }
 

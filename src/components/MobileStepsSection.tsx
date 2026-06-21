@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
+import MobileScaleFrame from '@/components/MobileScaleFrame';
+
 const ASSETS = {
   bubble: '/assets/mobile-block2-bubble.png',
   ellipse: '/assets/mobile-block2-ellipse.svg',
@@ -49,11 +51,13 @@ function StepDivider({ src, nodeId }: { src: string; nodeId: string }) {
 
 export default function MobileStepsSection() {
   return (
-    <section
-      className="relative mx-auto h-[438px] w-[390px] max-w-full overflow-x-clip bg-gradient-to-b from-[#c6c8e2] to-[#e1e0e7]"
+    <MobileScaleFrame
+      as="section"
+      designHeight={438}
       data-node-id="312:1103"
       data-name="блок 2"
       aria-label="How it works steps"
+      canvasClassName="relative overflow-x-clip bg-gradient-to-b from-[#c6c8e2] to-[#e1e0e7]"
     >
       {/* Ellipse — 312:1104 */}
       <div className="pointer-events-none absolute left-[-45px] top-[-80px] h-[190px] w-[443px]" data-node-id="312:1104">
@@ -199,6 +203,6 @@ export default function MobileStepsSection() {
           <StepDivider src={ASSETS.line33} nodeId="312:1123" />
         </div>
       </div>
-    </section>
+    </MobileScaleFrame>
   );
 }

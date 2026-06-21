@@ -3,8 +3,7 @@
 .mobile-block5-root {
   position: relative;
   isolation: isolate;
-  contain: layout style paint;
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 .mobile-block5-gallery-viewport {

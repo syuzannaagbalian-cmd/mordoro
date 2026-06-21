@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import MobileScaleFrame from '@/components/MobileScaleFrame';
 import {
   MOBILE_NOVA_POSHTA_BRANCHES,
   MOBILE_UKRAINIAN_CITIES,
@@ -118,12 +119,14 @@ export default function MobileOrderSection() {
   };
 
   return (
-    <section
+    <MobileScaleFrame
+      as="section"
       id="mobile-order-section"
-      className="relative mx-auto h-[891px] w-[390px] max-w-full overflow-x-clip bg-[#e1e0e7]"
+      designHeight={891}
       data-node-id="312:1129"
       data-name="блок 3"
       aria-label="Morldoro mobile order"
+      canvasClassName="relative overflow-x-clip bg-[#e1e0e7]"
     >
       {/* Product image — 312:1130 */}
       <div
@@ -496,6 +499,6 @@ export default function MobileOrderSection() {
           </p>
         </div>
       </div>
-    </section>
+    </MobileScaleFrame>
   );
 }
