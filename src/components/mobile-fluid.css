@@ -1,0 +1,31 @@
+/* Fluid mobile sections: 390px Figma base → full viewport width via --mf unit */
+
+.mobile-fluid-section {
+  --mf: calc(100vw / 390);
+  --mf-h: 0;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  min-height: calc(var(--mf-h) * var(--mf));
+}
+
+.mobile-fluid-canvas {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  min-height: calc(var(--mf-h) * var(--mf));
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.mobile-section-fluid {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}

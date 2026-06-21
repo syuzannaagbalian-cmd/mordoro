@@ -3,7 +3,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import Link from 'next/link';
-import MobileScaleFrame from '@/components/MobileScaleFrame';
+import MobileFluidSection from '@/components/MobileFluidSection';
 import { scrollToSection } from '@/utils/scrollToSection';
 
 const ASSETS = {
@@ -50,10 +50,10 @@ function AssetImg({
 function FeatureIconCircle({ src, nodeId }: { src: string; nodeId: string }) {
   return (
     <div
-      className="flex size-[42.943px] shrink-0 items-center justify-center rounded-[21.471px] border-[0.682px] border-solid border-[#bdbec9] bg-[rgba(255,255,255,0.5)]"
+      className="flex size-[calc(42.943*var(--mf))] shrink-0 items-center justify-center rounded-[calc(21.471*var(--mf))] border-[calc(0.682*var(--mf))] border-solid border-[#bdbec9] bg-[rgba(255,255,255,0.5)]"
       data-node-id={nodeId}
     >
-      <div className="relative h-[13.633px] w-[14.995px]">
+      <div className="relative h-[calc(13.633*var(--mf))] w-[calc(14.995*var(--mf))]">
         <div className="absolute inset-[-3.74%_-3.4%_-3.76%_-3.41%]">
           <AssetImg src={src} alt="" className="block size-full max-w-none" />
         </div>
@@ -64,7 +64,7 @@ function FeatureIconCircle({ src, nodeId }: { src: string; nodeId: string }) {
 
 export default function HeroMobile() {
   return (
-    <MobileScaleFrame
+    <MobileFluidSection
       as="div"
       designHeight={961}
       className="hero-mobile"
@@ -75,7 +75,7 @@ export default function HeroMobile() {
     >
       {/* Background — 312:1024 */}
       <div
-        className="pointer-events-none absolute left-0 top-0 h-[934px] w-[525px]"
+        className="pointer-events-none absolute left-0 top-0 h-[calc(934*var(--mf))] w-[calc(525*var(--mf))]"
         data-node-id="312:1024"
         data-name="ChatGPT Image 19 июн. 2026 г., 18_56_36 1"
       >
@@ -89,7 +89,7 @@ export default function HeroMobile() {
       </div>
 
       {/* Bottom ellipse — 312:1025 */}
-      <div className="pointer-events-none absolute bottom-[-38px] left-1/2 h-[190px] w-[526px] -translate-x-1/2" data-node-id="312:1025">
+      <div className="pointer-events-none absolute bottom-[calc(-38*var(--mf))] left-1/2 h-[calc(190*var(--mf))] w-[calc(526*var(--mf))] -translate-x-1/2" data-node-id="312:1025">
         <div className="absolute inset-[-18.68%_-6.75%]">
           <AssetImg src={ASSETS.ellipseBottom} alt="" className="block size-full max-w-none" />
         </div>
@@ -97,16 +97,16 @@ export default function HeroMobile() {
 
       {/* Content — 312:1100 */}
       <div
-        className="absolute left-[16px] top-[20px] flex w-[358px] flex-col items-center gap-[103px]"
+        className="absolute left-[calc(16*var(--mf))] top-[calc(20*var(--mf))] flex w-[calc(358*var(--mf))] flex-col items-center gap-[calc(103*var(--mf))]"
         data-node-id="312:1100"
       >
-        <div className="flex w-full flex-col items-start gap-[38px]" data-node-id="312:1099">
-          <div className="flex w-full flex-col items-start gap-[41px]" data-node-id="312:1098">
+        <div className="flex w-full flex-col items-start gap-[calc(38*var(--mf))]" data-node-id="312:1099">
+          <div className="flex w-full flex-col items-start gap-[calc(41*var(--mf))]" data-node-id="312:1098">
             {/* Header — 312:1027 */}
             <header className="flex w-full shrink-0 items-center justify-between" data-node-id="312:1027">
               <Link
                 href="/"
-                className="relative block h-[21.836px] w-[83.458px] shrink-0"
+                className="relative block h-[calc(21.836*var(--mf))] w-[calc(83.458*var(--mf))] shrink-0"
                 data-node-id="322:154"
                 data-name="Morldoro"
                 aria-label="Morldoro"
@@ -126,7 +126,7 @@ export default function HeroMobile() {
                 data-node-id="312:1029"
                 data-name="support"
               >
-                <span className="relative col-start-1 row-start-1 ml-[73.14px] mt-[0.72px] size-[10.359px]" data-node-id="312:1030">
+                <span className="relative col-start-1 row-start-1 ml-[calc(73.14*var(--mf))] mt-[calc(0.72*var(--mf))] size-[calc(10.359*var(--mf))]" data-node-id="312:1030">
                   <AssetImg
                     src={ASSETS.supportIcon}
                     alt=""
@@ -136,7 +136,7 @@ export default function HeroMobile() {
                   />
                 </span>
                 <span
-                  className="font-helvetica-neue-cyr--roman col-start-1 row-start-1 ml-0 mt-0 flex h-[11px] w-[64px] items-center justify-center text-center text-[12px] not-italic leading-[1.1] text-black"
+                  className="font-helvetica-neue-cyr--roman col-start-1 row-start-1 ml-0 mt-0 flex h-[calc(11*var(--mf))] w-[calc(64*var(--mf))] items-center justify-center text-center text-[calc(12*var(--mf))] not-italic leading-[1.1] text-black"
                   data-node-id="312:1031"
                 >
                   Підтримка
@@ -146,17 +146,17 @@ export default function HeroMobile() {
 
             {/* Badge + headline — 312:1096 */}
             <div
-              className="flex w-full flex-col items-center gap-[17px] leading-[0]"
+              className="flex w-full flex-col items-center gap-[calc(17*var(--mf))] leading-[0]"
               data-node-id="312:1096"
             >
               {/* Badge — 312:1032 / 322:156 */}
               <div className="relative inline-grid shrink-0 grid-cols-[max-content] grid-rows-[max-content] place-items-start" data-node-id="312:1032">
                 <div
-                  className="col-start-1 row-start-1 ml-0 mt-0 flex h-[30.4px] w-[209px] flex-col items-start justify-center rounded-[14.44px] border-[0.76px] border-solid border-[rgba(0,25,160,0.73)] pb-[8px] pl-[13px] pr-[18px] pt-[9px]"
+                  className="col-start-1 row-start-1 ml-0 mt-0 flex h-[calc(30.4*var(--mf))] w-[calc(209*var(--mf))] flex-col items-start justify-center rounded-[calc(14.44*var(--mf))] border-[calc(0.76*var(--mf))] border-solid border-[rgba(0,25,160,0.73)] pb-[calc(8*var(--mf))] pl-[calc(13*var(--mf))] pr-[calc(18*var(--mf))] pt-[calc(9*var(--mf))]"
                   data-node-id="322:156"
                 >
-                  <div className="flex shrink-0 items-center gap-[11px]" data-node-id="322:155">
-                    <span className="relative h-[13.6px] w-[12.92px] shrink-0" data-node-id="312:1035">
+                  <div className="flex shrink-0 items-center gap-[calc(11*var(--mf))]" data-node-id="322:155">
+                    <span className="relative h-[calc(13.6*var(--mf))] w-[calc(12.92*var(--mf))] shrink-0" data-node-id="312:1035">
                       <AssetImg
                         src={ASSETS.badgeIcon}
                         alt=""
@@ -166,7 +166,7 @@ export default function HeroMobile() {
                       />
                     </span>
                     <p
-                      className="font-helvetica-neue-cyr--roman m-0 flex h-[7.2px] w-[154.28px] items-center text-[9.12px] not-italic uppercase leading-normal text-[#001ba5]"
+                      className="font-helvetica-neue-cyr--roman m-0 flex h-[calc(7.2*var(--mf))] w-[calc(154.28*var(--mf))] items-center text-[calc(9.12*var(--mf))] not-italic uppercase leading-normal text-[#001ba5]"
                       data-node-id="312:1033"
                     >
                       антистрес нового покоління
@@ -177,18 +177,18 @@ export default function HeroMobile() {
 
               {/* Headline block — 312:1095 */}
               <div
-                className="flex w-full flex-col items-start gap-[17px] text-center text-[0px] [word-break:break-word]"
+                className="flex w-full flex-col items-start gap-[calc(17*var(--mf))] text-center text-[calc(0*var(--mf))] [word-break:break-word]"
                 data-node-id="312:1095"
               >
                 <div
-                  className="flex w-full flex-col items-start gap-[10px] font-sf-pro--medium font-[510] text-[#3e67dc]"
+                  className="flex w-full flex-col items-start gap-[calc(10*var(--mf))] font-sf-pro--medium font-[510] text-[#3e67dc]"
                   data-node-id="312:1094"
                 >
                   <div className="relative w-full shrink-0 whitespace-pre-wrap" data-node-id="312:1026" style={SF_VARIATION}>
-                    <p className="font-sf-pro--semibold m-0 mb-0 text-[58px] font-[590] leading-[0.95] text-black" style={SF_VARIATION}>
+                    <p className="font-sf-pro--semibold m-0 mb-0 text-[calc(58*var(--mf))] font-[590] leading-[0.95] text-black" style={SF_VARIATION}>
                       {`Пузиріння `}
                     </p>
-                    <p className="font-sf-pro--semibold m-0 text-[58px] font-[590]" style={SF_VARIATION}>
+                    <p className="font-sf-pro--semibold m-0 text-[calc(58*var(--mf))] font-[590]" style={SF_VARIATION}>
                       <span className="leading-[0.95] text-[#013bc4]" style={SF_VARIATION}>
                         не
                       </span>
@@ -201,17 +201,17 @@ export default function HeroMobile() {
                     </p>
                   </div>
                   <p className="relative m-0 w-full shrink-0" data-node-id="312:1037" style={SF_VARIATION}>
-                    <span className="font-sf-pro--semibold text-[36px] font-[590] leading-[0.97] text-black" style={SF_VARIATION}>
+                    <span className="font-sf-pro--semibold text-[calc(36*var(--mf))] font-[590] leading-[0.97] text-black" style={SF_VARIATION}>
                       {`вашому здоров'ю`}
                     </span>
-                    <span className="font-sf-pro--semibold text-[36px] font-[590] leading-[0.97] text-[#033ecf]" style={SF_VARIATION}>
+                    <span className="font-sf-pro--semibold text-[calc(36*var(--mf))] font-[590] leading-[0.97] text-[#033ecf]" style={SF_VARIATION}>
                       .
                     </span>
                   </p>
                 </div>
 
                 <p
-                  className="font-montserrat m-0 h-[33px] w-full shrink-0 text-[14px] font-normal leading-[1.45] tracking-[-0.56px] text-[#212121] whitespace-pre-wrap"
+                  className="font-montserrat m-0 h-[calc(33*var(--mf))] w-full shrink-0 text-[calc(14*var(--mf))] font-normal leading-[1.45] tracking-[calc(-0.56*var(--mf))] text-[#212121] whitespace-pre-wrap"
                   data-node-id="312:1036"
                 >
                   <span className="font-montserrat--medium">Г</span>
@@ -224,17 +224,17 @@ export default function HeroMobile() {
           </div>
 
           {/* Feature callouts — 312:1097 */}
-          <div className="flex w-[183.004px] flex-col items-start gap-[47px]" data-node-id="312:1097">
-            <div className="flex w-full items-center gap-[10px]" data-node-id="312:1038">
-              <div className="flex w-[122.062px] shrink-0 flex-col items-start" data-node-id="312:1039">
+          <div className="flex w-[calc(183.004*var(--mf))] flex-col items-start gap-[calc(47*var(--mf))]" data-node-id="312:1097">
+            <div className="flex w-full items-center gap-[calc(10*var(--mf))]" data-node-id="312:1038">
+              <div className="flex w-[calc(122.062*var(--mf))] shrink-0 flex-col items-start" data-node-id="312:1039">
                 <div
-                  className="flex w-full flex-col items-start gap-[2.42px] text-right font-helvetica-neue-cyr--roman not-italic leading-[1.45] [word-break:break-word]"
+                  className="flex w-full flex-col items-start gap-[calc(2.42*var(--mf))] text-right font-helvetica-neue-cyr--roman not-italic leading-[1.45] [word-break:break-word]"
                   data-node-id="312:1040"
                 >
-                  <p className="m-0 h-[17.32px] w-full text-[12px] tracking-[-0.48px] text-black" data-node-id="312:1041">
+                  <p className="m-0 h-[calc(17.32*var(--mf))] w-full text-[calc(12*var(--mf))] tracking-[calc(-0.48*var(--mf))] text-black" data-node-id="312:1041">
                     Справжнє клацання
                   </p>
-                  <p className="m-0 h-[13px] w-full text-[11px] tracking-[-0.44px] text-[#5b5b5b]" data-node-id="312:1042">
+                  <p className="m-0 h-[calc(13*var(--mf))] w-full text-[calc(11*var(--mf))] tracking-[calc(-0.44*var(--mf))] text-[#5b5b5b]" data-node-id="312:1042">
                     Як в оригінальної пачки
                   </p>
                 </div>
@@ -242,45 +242,45 @@ export default function HeroMobile() {
               <FeatureIconCircle src={ASSETS.featureIconClick} nodeId="312:1043" />
             </div>
 
-            <div className="flex items-center gap-[10px]" data-node-id="312:1058">
+            <div className="flex items-center gap-[calc(10*var(--mf))]" data-node-id="312:1058">
               <div
-                className="flex w-[109px] shrink-0 flex-col items-end gap-[2px] text-right font-helvetica-neue-cyr--roman not-italic leading-[1.45] [word-break:break-word]"
+                className="flex w-[calc(109*var(--mf))] shrink-0 flex-col items-end gap-[calc(2*var(--mf))] text-right font-helvetica-neue-cyr--roman not-italic leading-[1.45] [word-break:break-word]"
                 data-node-id="312:1059"
               >
-                <p className="m-0 h-[14px] w-[114px] text-[12px] tracking-[-0.48px] text-black" data-node-id="312:1060">
+                <p className="m-0 h-[calc(14*var(--mf))] w-[calc(114*var(--mf))] text-[calc(12*var(--mf))] tracking-[calc(-0.48*var(--mf))] text-black" data-node-id="312:1060">
                   Повна герметичність
                 </p>
-                <p className="m-0 h-[13px] w-[109px] text-[11px] tracking-[-0.44px] text-[#5b5b5b]" data-node-id="312:1061">
+                <p className="m-0 h-[calc(13*var(--mf))] w-[calc(109*var(--mf))] text-[calc(11*var(--mf))] tracking-[calc(-0.44*var(--mf))] text-[#5b5b5b]" data-node-id="312:1061">
                   Гарантує чисті кишені
                 </p>
               </div>
-              <div className="relative size-[42.943px] shrink-0" data-node-id="312:1062">
+              <div className="relative size-[calc(42.943*var(--mf))] shrink-0" data-node-id="312:1062">
                 <div className="absolute inset-[-1.59%]">
                   <AssetImg src={ASSETS.featureIconSeal} alt="" className="block size-full max-w-none" />
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-[10px]" data-node-id="312:1048">
+            <div className="flex items-center gap-[calc(10*var(--mf))]" data-node-id="312:1048">
               <div
-                className="relative h-[27px] w-[104px] shrink-0 text-right font-helvetica-neue-cyr--roman not-italic leading-[1.45] [word-break:break-word]"
+                className="relative h-[calc(27*var(--mf))] w-[calc(104*var(--mf))] shrink-0 text-right font-helvetica-neue-cyr--roman not-italic leading-[1.45] [word-break:break-word]"
                 data-node-id="312:1049"
               >
                 <p
-                  className="absolute left-[103.53px] top-[0.18px] m-0 h-[14.314px] w-[69.526px] -translate-x-full text-[12px] tracking-[-0.48px] text-black"
+                  className="absolute left-[calc(103.53*var(--mf))] top-[calc(0.18*var(--mf))] m-0 h-[calc(14.314*var(--mf))] w-[calc(69.526*var(--mf))] -translate-x-full text-[calc(12*var(--mf))] tracking-[calc(-0.48*var(--mf))] text-black"
                   data-node-id="312:1050"
                 >
                   Багаторазові
                 </p>
                 <p
-                  className="absolute left-[104px] top-[17px] m-0 h-[10px] w-[104px] -translate-x-full text-[11px] tracking-[-0.44px] text-[#5b5b5b]"
+                  className="absolute left-[calc(104*var(--mf))] top-[calc(17*var(--mf))] m-0 h-[calc(10*var(--mf))] w-[calc(104*var(--mf))] -translate-x-full text-[calc(11*var(--mf))] tracking-[calc(-0.44*var(--mf))] text-[#5b5b5b]"
                   data-node-id="312:1051"
                 >
                   Просто залий розчин
                 </p>
               </div>
-              <div className="relative size-[42.943px] shrink-0" data-node-id="312:1052">
-                <div className="absolute left-0 top-0 size-[42.943px]" data-node-id="312:1053">
+              <div className="relative size-[calc(42.943*var(--mf))] shrink-0" data-node-id="312:1052">
+                <div className="absolute left-0 top-0 size-[calc(42.943*var(--mf))]" data-node-id="312:1053">
                   <div className="absolute inset-[-1.59%]">
                     <AssetImg src={ASSETS.featureIconReuse} alt="" className="block size-full max-w-none" />
                   </div>
@@ -291,7 +291,7 @@ export default function HeroMobile() {
         </div>
 
         {/* CTA + social — 312:1067 */}
-        <div className="flex w-[268.388px] flex-col items-center gap-[33px]" data-node-id="312:1067">
+        <div className="flex w-[calc(268.388*var(--mf))] flex-col items-center gap-[calc(33*var(--mf))]" data-node-id="312:1067">
           <button
             type="button"
             className="hero-mobile-cta relative inline-grid shrink-0 cursor-pointer border-0 bg-transparent p-0 leading-[0] grid-cols-[max-content] grid-rows-[max-content] place-items-start"
@@ -300,8 +300,8 @@ export default function HeroMobile() {
             aria-label="Замовити"
             onClick={() => scrollToSection('mobile-order-section')}
           >
-            <span className="col-start-1 row-start-1 ml-0 mt-0 h-[52px] w-[236px] rounded-[29.5px] bg-[#022ec9]" data-node-id="312:1069" />
-            <span className="relative col-start-1 row-start-1 ml-[186px] mt-[9px] size-[33px]" data-node-id="312:1070">
+            <span className="col-start-1 row-start-1 ml-0 mt-0 h-[calc(52*var(--mf))] w-[calc(236*var(--mf))] rounded-[calc(29.5*var(--mf))] bg-[#022ec9]" data-node-id="312:1069" />
+            <span className="relative col-start-1 row-start-1 ml-[calc(186*var(--mf))] mt-[calc(9*var(--mf))] size-[calc(33*var(--mf))]" data-node-id="312:1070">
               <AssetImg
                 src={ASSETS.buttonCircle}
                 alt=""
@@ -310,26 +310,26 @@ export default function HeroMobile() {
                 height={33}
               />
             </span>
-            <span className="relative col-start-1 row-start-1 ml-[195.71px] mt-[25.5px] h-0 w-[12.618px]" data-node-id="312:1071">
-              <div className="absolute inset-[-7.15px_-7.69%_-7.15px_0]">
+            <span className="relative col-start-1 row-start-1 ml-[calc(195.71*var(--mf))] mt-[calc(25.5*var(--mf))] h-0 w-[calc(12.618*var(--mf))]" data-node-id="312:1071">
+              <div className="absolute inset-[calc(-7.15*var(--mf))_-7.69%_calc(-7.15*var(--mf))_0]">
                 <AssetImg src={ASSETS.arrow} alt="" className="block size-full max-w-none" width={12.618} height={14.3} />
               </div>
             </span>
             <span
-              className="font-helvetica-neue-cyr--medium col-start-1 row-start-1 ml-[28px] mt-[20px] flex h-[15px] w-[102px] items-center text-[14px] not-italic leading-normal text-white"
+              className="font-helvetica-neue-cyr--medium col-start-1 row-start-1 ml-[calc(28*var(--mf))] mt-[calc(20*var(--mf))] flex h-[calc(15*var(--mf))] w-[calc(102*var(--mf))] items-center text-[calc(14*var(--mf))] not-italic leading-normal text-white"
               data-node-id="312:1072"
             >
               Замовити
             </span>
           </button>
 
-          <div className="flex w-full flex-col items-center gap-[16px]" data-node-id="312:1073">
+          <div className="flex w-full flex-col items-center gap-[calc(16*var(--mf))]" data-node-id="312:1073">
             <div
               className="relative inline-grid shrink-0 grid-cols-[max-content] grid-rows-[max-content] place-items-start leading-[0]"
               data-node-id="312:1074"
             >
-              <div className="col-start-1 row-start-1 ml-0 mt-[57px] flex items-center gap-[18px]" data-node-id="312:1075">
-                <div className="relative h-[17.194px] w-[106.388px] shrink-0" data-node-id="312:1076">
+              <div className="col-start-1 row-start-1 ml-0 mt-[calc(57*var(--mf))] flex items-center gap-[calc(18*var(--mf))]" data-node-id="312:1075">
+                <div className="relative h-[calc(17.194*var(--mf))] w-[calc(106.388*var(--mf))] shrink-0" data-node-id="312:1076">
                   <AssetImg
                     src={ASSETS.stars}
                     alt=""
@@ -339,30 +339,30 @@ export default function HeroMobile() {
                   />
                 </div>
                 <p
-                  className="font-helvetica-neue-cyr--roman m-0 shrink-0 whitespace-nowrap text-[14px] not-italic leading-normal text-[#484848]"
+                  className="font-helvetica-neue-cyr--roman m-0 shrink-0 whitespace-nowrap text-[calc(14*var(--mf))] not-italic leading-normal text-[#484848]"
                   data-node-id="312:1083"
                 >
                   Вибір 1000+ українців
                 </p>
               </div>
 
-              <div className="col-start-1 row-start-1 ml-[62px] mt-0 inline-grid place-items-start">
-                <div className="relative col-start-1 row-start-1 ml-0 mt-0 size-[44.863px]" data-node-id="312:1085">
+              <div className="col-start-1 row-start-1 ml-[calc(62*var(--mf))] mt-0 inline-grid place-items-start">
+                <div className="relative col-start-1 row-start-1 ml-0 mt-0 size-[calc(44.863*var(--mf))]" data-node-id="312:1085">
                   <div className="absolute inset-[-4.35%]">
                     <AssetImg src={ASSETS.avatar1} alt="" className="block size-full max-w-none rounded-full object-cover" width={48.765} height={48.765} />
                   </div>
                 </div>
-                <div className="relative col-start-1 row-start-1 ml-[31.83px] mt-0 size-[44.863px]" data-node-id="312:1086">
+                <div className="relative col-start-1 row-start-1 ml-[calc(31.83*var(--mf))] mt-0 size-[calc(44.863*var(--mf))]" data-node-id="312:1086">
                   <div className="absolute inset-[-4.35%]">
                     <AssetImg src={ASSETS.avatar2} alt="" className="block size-full max-w-none rounded-full object-cover" width={48.765} height={48.765} />
                   </div>
                 </div>
-                <div className="relative col-start-1 row-start-1 ml-[65.18px] mt-0 size-[44.863px]" data-node-id="312:1087">
+                <div className="relative col-start-1 row-start-1 ml-[calc(65.18*var(--mf))] mt-0 size-[calc(44.863*var(--mf))]" data-node-id="312:1087">
                   <div className="absolute inset-[-4.35%]">
                     <AssetImg src={ASSETS.avatar3} alt="" className="block size-full max-w-none rounded-full object-cover" width={48.765} height={48.765} />
                   </div>
                 </div>
-                <div className="relative col-start-1 row-start-1 ml-[98.62px] mt-0 size-[44.863px]" data-node-id="312:1088">
+                <div className="relative col-start-1 row-start-1 ml-[calc(98.62*var(--mf))] mt-0 size-[calc(44.863*var(--mf))]" data-node-id="312:1088">
                   <div className="absolute inset-[-4.35%]">
                     <AssetImg src={ASSETS.avatar4} alt="" className="block size-full max-w-none rounded-full object-cover" width={48.765} height={48.765} />
                   </div>
@@ -370,23 +370,23 @@ export default function HeroMobile() {
               </div>
             </div>
 
-            <div className="flex items-center gap-[22px]" data-node-id="312:1089">
+            <div className="flex items-center gap-[calc(22*var(--mf))]" data-node-id="312:1089">
               <p
-                className="font-helvetica-neue-cyr--roman m-0 flex h-[10px] w-[134px] items-center text-[12px] not-italic leading-normal text-[#353535]"
+                className="font-helvetica-neue-cyr--roman m-0 flex h-[calc(10*var(--mf))] w-[calc(134*var(--mf))] items-center text-[calc(12*var(--mf))] not-italic leading-normal text-[#353535]"
                 data-node-id="312:1090"
               >
                 Приєднуйся до трендів
               </p>
-              <div className="relative h-[17.146px] w-[14.706px] shrink-0" data-node-id="312:1091">
+              <div className="relative h-[calc(17.146*var(--mf))] w-[calc(14.706*var(--mf))] shrink-0" data-node-id="312:1091">
                 <AssetImg src={ASSETS.tiktok} alt="" className="absolute inset-0 block size-full max-w-none" width={14.706} height={17.146} />
               </div>
-              <div className="relative size-[19.118px] shrink-0" data-node-id="312:1092">
+              <div className="relative size-[calc(19.118*var(--mf))] shrink-0" data-node-id="312:1092">
                 <AssetImg src={ASSETS.instagram} alt="" className="absolute inset-0 block size-full max-w-none" width={19.118} height={19.118} />
               </div>
             </div>
           </div>
         </div>
       </div>
-    </MobileScaleFrame>
+    </MobileFluidSection>
   );
 }

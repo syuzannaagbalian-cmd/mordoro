@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
-import MobileScaleFrame from '@/components/MobileScaleFrame';
+import MobileFluidSection from '@/components/MobileFluidSection';
 
 const ASSETS = {
   bubble: '/assets/mobile-block2-bubble.png',
@@ -37,10 +37,10 @@ function AssetImg({
 
 function StepDivider({ src, nodeId }: { src: string; nodeId: string }) {
   return (
-    <div className="absolute flex h-[23.022px] w-0 items-center justify-center" data-node-id={nodeId}>
+    <div className="absolute flex h-[calc(23.022*var(--mf))] w-0 items-center justify-center" data-node-id={nodeId}>
       <div className="-rotate-90 flex-none">
-        <div className="relative h-0 w-[23.022px]">
-          <div className="absolute inset-[-1px_0_0_0]">
+        <div className="relative h-0 w-[calc(23.022*var(--mf))]">
+          <div className="absolute inset-[calc(-1*var(--mf))_0_0_0]">
             <AssetImg src={src} alt="" className="block size-full max-w-none" width={23.022} height={1} />
           </div>
         </div>
@@ -51,7 +51,7 @@ function StepDivider({ src, nodeId }: { src: string; nodeId: string }) {
 
 export default function MobileStepsSection() {
   return (
-    <MobileScaleFrame
+    <MobileFluidSection
       as="section"
       designHeight={438}
       data-node-id="312:1103"
@@ -60,7 +60,7 @@ export default function MobileStepsSection() {
       canvasClassName="relative overflow-hidden bg-gradient-to-b from-[#c6c8e2] to-[#e1e0e7]"
     >
       {/* Ellipse — 312:1104 */}
-      <div className="pointer-events-none absolute left-[-45px] top-[-80px] h-[190px] w-[443px]" data-node-id="312:1104">
+      <div className="pointer-events-none absolute left-[calc(-45*var(--mf))] top-[calc(-80*var(--mf))] h-[calc(190*var(--mf))] w-[calc(443*var(--mf))]" data-node-id="312:1104">
         <div className="absolute inset-[-18.68%_-8.01%]">
           <AssetImg src={ASSETS.ellipse} alt="" className="block size-full max-w-none" />
         </div>
@@ -68,35 +68,35 @@ export default function MobileStepsSection() {
 
       {/* Steps group — 312:1105 */}
       <div
-        className="absolute left-[48px] top-[84px] h-[255.922px] w-[291.25px]"
+        className="absolute left-[calc(48*var(--mf))] top-[calc(84*var(--mf))] h-[calc(255.922*var(--mf))] w-[calc(291.25*var(--mf))]"
         data-node-id="312:1105"
       >
         {/* Bubbles — 312:1125 */}
         <div className="pointer-events-none absolute inset-0" aria-hidden data-node-id="312:1125">
           <div
-            className="absolute left-[-61px] top-[-56px] h-[106.827px] w-[111.213px] rounded-[259.55px] blur-[0.689px]"
+            className="absolute left-[calc(-61*var(--mf))] top-[calc(-56*var(--mf))] h-[calc(106.827*var(--mf))] w-[calc(111.213*var(--mf))] rounded-[calc(259.55*var(--mf))] blur-[calc(0.689*var(--mf))]"
             data-node-id="312:1126"
             data-name="Firefly (12) 2"
           >
-            <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[259.55px] opacity-70">
+            <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[calc(259.55*var(--mf))] opacity-70">
               <AssetImg src={ASSETS.bubble} alt="" className={BUBBLE_IMAGE_LARGE} />
             </div>
           </div>
           <div
-            className="absolute left-[-23px] top-[96px] h-[35px] w-[36px] rounded-[259.55px]"
+            className="absolute left-[calc(-23*var(--mf))] top-[calc(96*var(--mf))] h-[calc(35*var(--mf))] w-[calc(36*var(--mf))] rounded-[calc(259.55*var(--mf))]"
             data-node-id="312:1128"
             data-name="Firefly (12) 6"
           >
-            <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[259.55px] opacity-80">
+            <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[calc(259.55*var(--mf))] opacity-80">
               <AssetImg src={ASSETS.bubble} alt="" className={BUBBLE_IMAGE_SMALL} />
             </div>
           </div>
           <div
-            className="absolute left-[44.213px] top-[20px] h-[31px] w-[32px] rounded-[259.55px]"
+            className="absolute left-[calc(44.213*var(--mf))] top-[calc(20*var(--mf))] h-[calc(31*var(--mf))] w-[calc(32*var(--mf))] rounded-[calc(259.55*var(--mf))]"
             data-node-id="312:1127"
             data-name="Firefly (12) 5"
           >
-            <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[259.55px] opacity-80">
+            <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[calc(259.55*var(--mf))] opacity-80">
               <AssetImg src={ASSETS.bubble} alt="" className={BUBBLE_IMAGE_SMALL} />
             </div>
           </div>
@@ -104,28 +104,28 @@ export default function MobileStepsSection() {
 
         {/* Step 1 — 312:1106 */}
         <div
-          className="absolute left-[112px] top-0 flex h-[45.925px] w-[178.25px] items-center gap-[8px] [word-break:break-word]"
+          className="absolute left-[calc(112*var(--mf))] top-0 flex h-[calc(45.925*var(--mf))] w-[calc(178.25*var(--mf))] items-center gap-[calc(8*var(--mf))] [word-break:break-word]"
           data-node-id="312:1106"
         >
           <p
-            className="font-helvetica-neue-cyr--thin m-0 h-[45.925px] w-[63px] shrink-0 text-[56.766px] not-italic leading-[1.02] tracking-[-3.4059px] text-white"
+            className="font-helvetica-neue-cyr--thin m-0 h-[calc(45.925*var(--mf))] w-[calc(63*var(--mf))] shrink-0 text-[calc(56.766*var(--mf))] not-italic leading-[1.02] tracking-[calc(-3.4059*var(--mf))] text-white"
             data-node-id="312:1107"
           >
             01
           </p>
           <div
-            className="flex h-[40.45px] w-[107.25px] shrink-0 flex-col items-start gap-[3px]"
+            className="flex h-[calc(40.45*var(--mf))] w-[calc(107.25*var(--mf))] shrink-0 flex-col items-start gap-[calc(3*var(--mf))]"
             data-node-id="312:1108"
           >
             <p
-              className="font-sf-pro--medium m-0 flex h-[21.45px] w-full items-center text-[16.5px] font-[510] leading-[1.02] tracking-[-0.66px] text-black"
+              className="font-sf-pro--medium m-0 flex h-[calc(21.45*var(--mf))] w-full items-center text-[calc(16.5*var(--mf))] font-[510] leading-[1.02] tracking-[calc(-0.66*var(--mf))] text-black"
               style={SF_VARIATION}
               data-node-id="312:1109"
             >
               ВІДКРИЙ
             </p>
             <p
-              className="font-helvetica-neue-cyr--roman m-0 flex h-[16px] w-full items-center text-[13.2px] not-italic leading-[118.11%] text-[#5c5c5c]"
+              className="font-helvetica-neue-cyr--roman m-0 flex h-[calc(16*var(--mf))] w-full items-center text-[calc(13.2*var(--mf))] not-italic leading-[118.11%] text-[#5c5c5c]"
               data-node-id="312:1110"
             >
               Дістань цигарку
@@ -135,29 +135,29 @@ export default function MobileStepsSection() {
 
         {/* Step 2 — 312:1112 */}
         <div
-          className="absolute left-0 top-[104.921875px] flex h-[47px] w-[173px] items-center justify-between [word-break:break-word]"
+          className="absolute left-0 top-[calc(104.921875*var(--mf))] flex h-[calc(47*var(--mf))] w-[calc(173*var(--mf))] items-center justify-between [word-break:break-word]"
           data-node-id="312:1112"
         >
           <div
-            className="flex h-[36px] w-[94px] shrink-0 flex-col items-start text-right"
+            className="flex h-[calc(36*var(--mf))] w-[calc(94*var(--mf))] shrink-0 flex-col items-start text-right"
             data-node-id="312:1113"
           >
             <p
-              className="font-sf-pro--medium m-0 flex h-[21px] w-full items-center justify-end text-[16.5px] font-[510] leading-[1.02] tracking-[-0.66px] text-black"
+              className="font-sf-pro--medium m-0 flex h-[calc(21*var(--mf))] w-full items-center justify-end text-[calc(16.5*var(--mf))] font-[510] leading-[1.02] tracking-[calc(-0.66*var(--mf))] text-black"
               style={SF_VARIATION}
               data-node-id="312:1114"
             >
               ВМОЧИ
             </p>
             <p
-              className="font-helvetica-neue-cyr--roman m-0 flex h-[15px] w-full items-center justify-end text-[13.2px] not-italic leading-[118.11%] text-[#5c5c5c]"
+              className="font-helvetica-neue-cyr--roman m-0 flex h-[calc(15*var(--mf))] w-full items-center justify-end text-[calc(13.2*var(--mf))] not-italic leading-[118.11%] text-[#5c5c5c]"
               data-node-id="312:1115"
             >
               Занур у рідину
             </p>
           </div>
           <p
-            className="font-helvetica-neue-cyr--thin m-0 h-[47px] w-[63px] shrink-0 text-[56.77px] not-italic leading-[1.02] tracking-[-3.4062px] text-white"
+            className="font-helvetica-neue-cyr--thin m-0 h-[calc(47*var(--mf))] w-[calc(63*var(--mf))] shrink-0 text-[calc(56.77*var(--mf))] not-italic leading-[1.02] tracking-[calc(-3.4062*var(--mf))] text-white"
             data-node-id="312:1116"
           >
             02
@@ -166,28 +166,28 @@ export default function MobileStepsSection() {
 
         {/* Step 3 — 312:1118 */}
         <div
-          className="absolute left-[113px] top-[210.921875px] flex h-[45px] w-[178.25px] items-end justify-between [word-break:break-word]"
+          className="absolute left-[calc(113*var(--mf))] top-[calc(210.921875*var(--mf))] flex h-[calc(45*var(--mf))] w-[calc(178.25*var(--mf))] items-end justify-between [word-break:break-word]"
           data-node-id="312:1118"
         >
           <p
-            className="font-helvetica-neue-cyr--thin m-0 h-[45px] w-[63px] shrink-0 text-[56.77px] not-italic leading-[1.02] tracking-[-3.4062px] text-white"
+            className="font-helvetica-neue-cyr--thin m-0 h-[calc(45*var(--mf))] w-[calc(63*var(--mf))] shrink-0 text-[calc(56.77*var(--mf))] not-italic leading-[1.02] tracking-[calc(-3.4062*var(--mf))] text-white"
             data-node-id="312:1119"
           >
             03
           </p>
           <div
-            className="flex h-[40.45px] w-[107.25px] shrink-0 flex-col items-start gap-[3px]"
+            className="flex h-[calc(40.45*var(--mf))] w-[calc(107.25*var(--mf))] shrink-0 flex-col items-start gap-[calc(3*var(--mf))]"
             data-node-id="312:1120"
           >
             <p
-              className="font-sf-pro--medium m-0 flex h-[21.45px] w-full items-center text-[16.5px] font-[510] leading-[1.02] tracking-[-0.66px] text-black"
+              className="font-sf-pro--medium m-0 flex h-[calc(21.45*var(--mf))] w-full items-center text-[calc(16.5*var(--mf))] font-[510] leading-[1.02] tracking-[calc(-0.66*var(--mf))] text-black"
               style={SF_VARIATION}
               data-node-id="312:1121"
             >
               ВИДУЙ
             </p>
             <p
-              className="font-helvetica-neue-cyr--roman m-0 flex h-[16px] w-full items-center text-[13.2px] not-italic leading-[118.11%] text-[#5c5c5c]"
+              className="font-helvetica-neue-cyr--roman m-0 flex h-[calc(16*var(--mf))] w-full items-center text-[calc(13.2*var(--mf))] not-italic leading-[118.11%] text-[#5c5c5c]"
               data-node-id="312:1122"
             >
               Та насолоджуйся
@@ -196,13 +196,13 @@ export default function MobileStepsSection() {
         </div>
 
         {/* Divider lines — 312:1124, 312:1123 */}
-        <div className="absolute left-[142px] top-[86.0234375px]">
+        <div className="absolute left-[calc(142*var(--mf))] top-[calc(86.0234375*var(--mf))]">
           <StepDivider src={ASSETS.line32} nodeId="312:1124" />
         </div>
-        <div className="absolute left-[142px] top-[197.0234375px]">
+        <div className="absolute left-[calc(142*var(--mf))] top-[calc(197.0234375*var(--mf))]">
           <StepDivider src={ASSETS.line33} nodeId="312:1123" />
         </div>
       </div>
-    </MobileScaleFrame>
+    </MobileFluidSection>
   );
 }

@@ -1,7 +1,7 @@
 import type { CSSProperties, ElementType, HTMLAttributes, ReactNode } from 'react';
-import './mobile-scale.css';
+import './mobile-fluid.css';
 
-type MobileScaleFrameProps = {
+type MobileFluidSectionProps = {
   as?: ElementType;
   designHeight: number;
   className?: string;
@@ -9,23 +9,23 @@ type MobileScaleFrameProps = {
   children: ReactNode;
 } & HTMLAttributes<HTMLElement>;
 
-export default function MobileScaleFrame({
-  as: Tag = 'div',
+export default function MobileFluidSection({
+  as: Tag = 'section',
   designHeight,
   className = '',
   canvasClassName = '',
   children,
   style,
   ...rest
-}: MobileScaleFrameProps) {
+}: MobileFluidSectionProps) {
   const cssVars = {
-    '--mobile-design-h': designHeight,
+    '--mf-h': designHeight,
     ...style,
   } as CSSProperties;
 
   return (
-    <Tag className={`mobile-scale-frame ${className}`.trim()} style={cssVars} {...rest}>
-      <div className={`mobile-scale-canvas ${canvasClassName}`.trim()}>{children}</div>
+    <Tag className={`mobile-section-fluid mobile-fluid-section ${className}`.trim()} style={cssVars} {...rest}>
+      <div className={`mobile-fluid-canvas ${canvasClassName}`.trim()}>{children}</div>
     </Tag>
   );
 }

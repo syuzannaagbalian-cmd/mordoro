@@ -45,7 +45,7 @@ body {
 
 .site-layout--mobile > section,
 .site-layout--mobile > .hero-mobile,
-.site-layout--mobile > .mobile-scale-frame,
+.site-layout--mobile > .mobile-fluid-section,
 .site-layout--mobile > .mobile-section-fluid {
   width: 100%;
   max-width: 100%;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import MobileScaleFrame from '@/components/MobileScaleFrame';
+import MobileFluidSection from '@/components/MobileFluidSection';
 import {
   MOBILE_NOVA_POSHTA_BRANCHES,
   MOBILE_UKRAINIAN_CITIES,
@@ -48,12 +48,12 @@ function AssetImg({
 function MobileDropdownChevron({ nodeId, src }: { nodeId: string; src: string }) {
   return (
     <div
-      className="pointer-events-none absolute right-[26.324px] top-1/2 flex h-[0.823px] w-0 -translate-y-1/2 items-center justify-center"
+      className="pointer-events-none absolute right-[calc(26.324*var(--mf))] top-1/2 flex h-[calc(0.823*var(--mf))] w-0 -translate-y-1/2 items-center justify-center"
       aria-hidden
     >
       <div className="flex-none rotate-90">
-        <div className="relative h-0 w-[0.823px]" data-node-id={nodeId}>
-          <div className="absolute inset-[-4.54px_-75%_-4.54px_-452.3%]">
+        <div className="relative h-0 w-[calc(0.823*var(--mf))]" data-node-id={nodeId}>
+          <div className="absolute inset-[calc(-4.54*var(--mf))_-75%_calc(-4.54*var(--mf))_-452.3%]">
             <AssetImg src={src} className="block max-w-none size-full" />
           </div>
         </div>
@@ -65,7 +65,7 @@ function MobileDropdownChevron({ nodeId, src }: { nodeId: string; src: string })
 function FieldError({ message }: { message?: string }) {
   if (!message) return null;
   return (
-    <p className="mobile-order-error font-helvetica-neue-cyr--roman absolute left-0 top-[64.17px] m-0 h-[11px] text-[9px] not-italic leading-[1.175] text-[#d93025]">
+    <p className="mobile-order-error font-helvetica-neue-cyr--roman absolute left-0 top-[calc(64.17*var(--mf))] m-0 h-[calc(11*var(--mf))] text-[calc(9*var(--mf))] not-italic leading-[1.175] text-[#d93025]">
       {message}
     </p>
   );
@@ -119,7 +119,7 @@ export default function MobileOrderSection() {
   };
 
   return (
-    <MobileScaleFrame
+    <MobileFluidSection
       as="section"
       id="mobile-order-section"
       designHeight={891}
@@ -130,7 +130,7 @@ export default function MobileOrderSection() {
     >
       {/* Product image — 312:1130 */}
       <div
-        className="pointer-events-none absolute left-[-248px] top-[8px] h-[364px] w-[781px]"
+        className="pointer-events-none absolute left-[calc(-248*var(--mf))] top-[calc(8*var(--mf))] h-[calc(364*var(--mf))] w-[calc(781*var(--mf))]"
         data-node-id="312:1130"
         data-name="a pack with bubbles (1) 2"
       >
@@ -143,16 +143,16 @@ export default function MobileOrderSection() {
 
       {/* Pricing column — 312:1132 */}
       <div
-        className="absolute left-[212px] top-[46px] flex w-[161px] flex-col items-center gap-[16px]"
+        className="absolute left-[calc(212*var(--mf))] top-[calc(46*var(--mf))] flex w-[calc(161*var(--mf))] flex-col items-center gap-[calc(16*var(--mf))]"
         data-node-id="312:1132"
       >
         {/* Discount badge — 312:1133 */}
         <div
-          className="flex h-[27.961px] w-full shrink-0 items-center justify-center gap-[7.767px] rounded-[14.757px] border-[0.777px] border-solid border-[#022ec9] px-[24.854px] pb-[8.544px] pt-[7.767px]"
+          className="flex h-[calc(27.961*var(--mf))] w-full shrink-0 items-center justify-center gap-[calc(7.767*var(--mf))] rounded-[calc(14.757*var(--mf))] border-[calc(0.777*var(--mf))] border-solid border-[#022ec9] px-[calc(24.854*var(--mf))] pb-[calc(8.544*var(--mf))] pt-[calc(7.767*var(--mf))]"
           data-node-id="312:1133"
           data-name="discount"
         >
-          <div className="relative h-[11.653px] w-[10.01px] shrink-0" data-node-id="312:1134">
+          <div className="relative h-[calc(11.653*var(--mf))] w-[calc(10.01*var(--mf))] shrink-0" data-node-id="312:1134">
             <AssetImg
               src={ASSETS.discountIcon}
               alt=""
@@ -162,7 +162,7 @@ export default function MobileOrderSection() {
             />
           </div>
           <p
-            className="font-helvetica-neue-cyr--roman m-0 flex h-[6.99px] w-[92.427px] shrink-0 items-center text-[9.32px] not-italic uppercase leading-[0] text-[#13151a] [word-break:break-word]"
+            className="font-helvetica-neue-cyr--roman m-0 flex h-[calc(6.99*var(--mf))] w-[calc(92.427*var(--mf))] shrink-0 items-center text-[calc(9.32*var(--mf))] not-italic uppercase leading-[0] text-[#13151a] [word-break:break-word]"
             data-node-id="312:1137"
           >
             <span className="leading-normal">{`Знижка `}</span>
@@ -171,21 +171,21 @@ export default function MobileOrderSection() {
         </div>
 
         {/* Price block — 312:1138 */}
-        <div className="flex w-full shrink-0 flex-col items-start gap-[7.156px] [word-break:break-word]" data-node-id="312:1138">
+        <div className="flex w-full shrink-0 flex-col items-start gap-[calc(7.156*var(--mf))] [word-break:break-word]" data-node-id="312:1138">
           <div
             className="font-sf-pro--medium flex w-full shrink-0 items-end leading-[1.02] text-black"
             data-node-id="312:1139"
             data-name="new price"
           >
             <p
-              className="m-0 h-[67.978px] w-[99.283px] shrink-0 text-[69.316px]"
+              className="m-0 h-[calc(67.978*var(--mf))] w-[calc(99.283*var(--mf))] shrink-0 text-[calc(69.316*var(--mf))]"
               style={SF_VARIATION}
               data-node-id="312:1140"
             >
               99
             </p>
             <p
-              className="m-0 h-[37.567px] w-[61.717px] shrink-0 text-[35.503px] tracking-[-0.7101px]"
+              className="m-0 h-[calc(37.567*var(--mf))] w-[calc(61.717*var(--mf))] shrink-0 text-[calc(35.503*var(--mf))] tracking-[calc(-0.7101*var(--mf))]"
               style={SF_VARIATION}
               data-node-id="312:1141"
             >
@@ -193,30 +193,30 @@ export default function MobileOrderSection() {
             </p>
           </div>
           <p
-            className="font-helvetica-neue-cyr--light m-0 h-[33.381px] w-full shrink-0 text-center text-[#636363] not-italic leading-[0] [word-break:break-word]"
+            className="font-helvetica-neue-cyr--light m-0 h-[calc(33.381*var(--mf))] w-full shrink-0 text-center text-[#636363] not-italic leading-[0] [word-break:break-word]"
             data-node-id="312:1142"
           >
-            <span className="text-[34.201px] leading-[1.02] line-through decoration-solid decoration-from-font [text-decoration-skip-ink:none] [text-underline-position:from-font]">{`139 `}</span>
-            <span className="text-[31.052px] leading-[1.02]">грн</span>
+            <span className="text-[calc(34.201*var(--mf))] leading-[1.02] line-through decoration-solid decoration-from-font [text-decoration-skip-ink:none] [text-underline-position:from-font]">{`139 `}</span>
+            <span className="text-[calc(31.052*var(--mf))] leading-[1.02]">грн</span>
           </p>
         </div>
 
         {/* Quantity — 312:1143 */}
-        <div className="flex shrink-0 flex-col items-center gap-[16px]" data-node-id="312:1143">
-          <div className="relative h-[42.698px] w-[125px] shrink-0" data-node-id="312:1144" data-name="quantity">
+        <div className="flex shrink-0 flex-col items-center gap-[calc(16*var(--mf))]" data-node-id="312:1143">
+          <div className="relative h-[calc(42.698*var(--mf))] w-[calc(125*var(--mf))] shrink-0" data-node-id="312:1144" data-name="quantity">
             <div
-              className="absolute inset-0 rounded-[21.349px] border-[0.619px] border-solid border-[#c1c5d1] bg-[rgba(255,255,255,0.46)]"
+              className="absolute inset-0 rounded-[calc(21.349*var(--mf))] border-[calc(0.619*var(--mf))] border-solid border-[#c1c5d1] bg-[rgba(255,255,255,0.46)]"
               data-node-id="312:1145"
             />
             <p
-              className="font-idealist-sans absolute left-[53.356px] top-[11.943px] m-0 flex h-[19.901px] w-[8.624px] items-center justify-center text-[21.228px] not-italic leading-[1.02] text-[#323232]"
+              className="font-idealist-sans absolute left-[calc(53.356*var(--mf))] top-[calc(11.943*var(--mf))] m-0 flex h-[calc(19.901*var(--mf))] w-[calc(8.624*var(--mf))] items-center justify-center text-[calc(21.228*var(--mf))] not-italic leading-[1.02] text-[#323232]"
               data-node-id="312:1146"
             >
               {quantity}
             </p>
             <button
               type="button"
-              className="mobile-order-qty-btn absolute left-[97.138px] top-[16.591px] size-[12.604px] cursor-pointer border-0 bg-transparent p-0"
+              className="mobile-order-qty-btn absolute left-[calc(97.138*var(--mf))] top-[calc(16.591*var(--mf))] size-[calc(12.604*var(--mf))] cursor-pointer border-0 bg-transparent p-0"
               onClick={increaseQuantity}
               aria-label="Збільшити кількість"
               data-node-id="312:1147"
@@ -231,12 +231,12 @@ export default function MobileOrderSection() {
             </button>
             <button
               type="button"
-              className="mobile-order-qty-btn absolute left-[6.921px] top-[23.219px] h-0 w-[12.604px] cursor-pointer border-0 bg-transparent p-0"
+              className="mobile-order-qty-btn absolute left-[calc(6.921*var(--mf))] top-[calc(23.219*var(--mf))] h-0 w-[calc(12.604*var(--mf))] cursor-pointer border-0 bg-transparent p-0"
               onClick={decreaseQuantity}
               aria-label="Зменшити кількість"
               data-node-id="312:1148"
             >
-              <div className="absolute inset-[-1.33px_0_0_0]">
+              <div className="absolute inset-[calc(-1.33*var(--mf))_0_0_0]">
                 <AssetImg
                   src={ASSETS.quantityMinus}
                   alt=""
@@ -248,7 +248,7 @@ export default function MobileOrderSection() {
             </button>
           </div>
           <p
-            className="font-helvetica-neue-cyr--roman m-0 flex h-[11px] w-[114px] shrink-0 items-center justify-center text-center text-[12px] not-italic leading-[1.175] text-[#676767] [word-break:break-word]"
+            className="font-helvetica-neue-cyr--roman m-0 flex h-[calc(11*var(--mf))] w-[calc(114*var(--mf))] shrink-0 items-center justify-center text-center text-[calc(12*var(--mf))] not-italic leading-[1.175] text-[#676767] [word-break:break-word]"
             data-node-id="312:1149"
           >
             Собі й товаришу!
@@ -258,21 +258,21 @@ export default function MobileOrderSection() {
 
       {/* Order form — 312:1150 */}
       <div
-        className="absolute left-[16px] top-[331.96px] flex w-[357px] flex-col items-center gap-[19.743px]"
+        className="absolute left-[calc(16*var(--mf))] top-[calc(331.96*var(--mf))] flex w-[calc(357*var(--mf))] flex-col items-center gap-[calc(19.743*var(--mf))]"
         data-node-id="312:1150"
       >
-        <div className="flex w-full shrink-0 flex-col items-start gap-[28.45px]" data-node-id="312:1151">
-          <div className="flex w-full shrink-0 flex-col items-start gap-[25.402px]" data-node-id="312:1152">
+        <div className="flex w-full shrink-0 flex-col items-start gap-[calc(28.45*var(--mf))]" data-node-id="312:1151">
+          <div className="flex w-full shrink-0 flex-col items-start gap-[calc(25.402*var(--mf))]" data-node-id="312:1152">
             {/* Name — 312:1153 */}
-            <div className="relative h-[64.165px] w-full shrink-0" data-node-id="312:1153">
+            <div className="relative h-[calc(64.165*var(--mf))] w-full shrink-0" data-node-id="312:1153">
               <label
                 htmlFor="mobile-order-name"
-                className="font-helvetica-neue-cyr--roman absolute left-[19.722px] top-0 m-0 flex h-[14.807px] items-center text-[11.517px] not-italic leading-[1.175] text-[#2a2a2a] [word-break:break-word]"
+                className="font-helvetica-neue-cyr--roman absolute left-[calc(19.722*var(--mf))] top-0 m-0 flex h-[calc(14.807*var(--mf))] items-center text-[calc(11.517*var(--mf))] not-italic leading-[1.175] text-[#2a2a2a] [word-break:break-word]"
                 data-node-id="312:1154"
               >
                 Ім&apos;я*
               </label>
-              <div className="absolute left-0 top-[16.46px] h-[47.713px] w-[356.199px]" data-node-id="312:1155">
+              <div className="absolute left-0 top-[calc(16.46*var(--mf))] h-[calc(47.713*var(--mf))] w-[calc(356.199*var(--mf))]" data-node-id="312:1155">
                 <input
                   id="mobile-order-name"
                   type="text"
@@ -283,7 +283,7 @@ export default function MobileOrderSection() {
                   }}
                   placeholder="|"
                   aria-invalid={Boolean(errors.name)}
-                  className={`mobile-order-field-input font-helvetica-neue-cyr--roman absolute inset-0 flex h-[47.713px] w-[356.199px] items-center rounded-[24.679px] border-0 bg-white pl-[18.898px] pr-[18.898px] text-[11.517px] not-italic leading-[1.175] text-[#393939] outline-none ${errors.name ? 'ring-1 ring-[#d93025]' : ''}`}
+                  className={`mobile-order-field-input font-helvetica-neue-cyr--roman absolute inset-0 flex h-[calc(47.713*var(--mf))] w-[calc(356.199*var(--mf))] items-center rounded-[calc(24.679*var(--mf))] border-0 bg-white pl-[calc(18.898*var(--mf))] pr-[calc(18.898*var(--mf))] text-[calc(11.517*var(--mf))] not-italic leading-[1.175] text-[#393939] outline-none ${errors.name ? 'ring-1 ring-[#d93025]' : ''}`}
                   data-node-id="312:1156"
                 />
               </div>
@@ -291,15 +291,15 @@ export default function MobileOrderSection() {
             </div>
 
             {/* Phone — 312:1158 */}
-            <div className="relative h-[64.165px] w-full shrink-0" data-node-id="312:1158">
+            <div className="relative h-[calc(64.165*var(--mf))] w-full shrink-0" data-node-id="312:1158">
               <label
                 htmlFor="mobile-order-phone"
-                className="font-helvetica-neue-cyr--roman absolute left-[20.544px] top-0 m-0 flex h-[14.807px] items-center text-[11.517px] not-italic leading-[1.175] text-[#2a2a2a] [word-break:break-word]"
+                className="font-helvetica-neue-cyr--roman absolute left-[calc(20.544*var(--mf))] top-0 m-0 flex h-[calc(14.807*var(--mf))] items-center text-[calc(11.517*var(--mf))] not-italic leading-[1.175] text-[#2a2a2a] [word-break:break-word]"
                 data-node-id="312:1159"
               >
                 Телефон*
               </label>
-              <div className="absolute left-0 top-[16.46px] h-[47.713px] w-[356.199px]" data-node-id="312:1160">
+              <div className="absolute left-0 top-[calc(16.46*var(--mf))] h-[calc(47.713*var(--mf))] w-[calc(356.199*var(--mf))]" data-node-id="312:1160">
                 <input
                   id="mobile-order-phone"
                   type="tel"
@@ -309,7 +309,7 @@ export default function MobileOrderSection() {
                     if (errors.phone) setErrors((prev) => ({ ...prev, phone: undefined }));
                   }}
                   aria-invalid={Boolean(errors.phone)}
-                  className={`mobile-order-field-input font-helvetica-neue-cyr--roman absolute inset-0 flex h-[47.713px] w-[356.199px] items-center rounded-[24.679px] border-0 bg-white pl-[22.191px] pr-[18.898px] text-[11.517px] not-italic leading-[1.175] text-[#393939] outline-none ${errors.phone ? 'ring-1 ring-[#d93025]' : ''}`}
+                  className={`mobile-order-field-input font-helvetica-neue-cyr--roman absolute inset-0 flex h-[calc(47.713*var(--mf))] w-[calc(356.199*var(--mf))] items-center rounded-[calc(24.679*var(--mf))] border-0 bg-white pl-[calc(22.191*var(--mf))] pr-[calc(18.898*var(--mf))] text-[calc(11.517*var(--mf))] not-italic leading-[1.175] text-[#393939] outline-none ${errors.phone ? 'ring-1 ring-[#d93025]' : ''}`}
                   data-node-id="312:1161"
                 />
               </div>
@@ -317,16 +317,16 @@ export default function MobileOrderSection() {
             </div>
 
             {/* City + branch — 312:1163 */}
-            <div className="flex w-full shrink-0 items-center gap-[16.453px]" data-node-id="312:1163">
-              <div className="relative h-[64.165px] w-[169.462px] shrink-0" data-node-id="312:1164">
+            <div className="flex w-full shrink-0 items-center gap-[calc(16.453*var(--mf))]" data-node-id="312:1163">
+              <div className="relative h-[calc(64.165*var(--mf))] w-[calc(169.462*var(--mf))] shrink-0" data-node-id="312:1164">
                 <label
                   htmlFor="mobile-order-city"
-                  className="font-helvetica-neue-cyr--roman absolute left-[18.898px] top-0 m-0 flex h-[14.807px] items-center text-[11.517px] not-italic leading-[1.175] text-[#2a2a2a] [word-break:break-word]"
+                  className="font-helvetica-neue-cyr--roman absolute left-[calc(18.898*var(--mf))] top-0 m-0 flex h-[calc(14.807*var(--mf))] items-center text-[calc(11.517*var(--mf))] not-italic leading-[1.175] text-[#2a2a2a] [word-break:break-word]"
                   data-node-id="312:1165"
                 >
                   Місто*
                 </label>
-                <div className="absolute left-0 top-[16.44px] h-[47.713px] w-[169.462px]" data-node-id="312:1166">
+                <div className="absolute left-0 top-[calc(16.44*var(--mf))] h-[calc(47.713*var(--mf))] w-[calc(169.462*var(--mf))]" data-node-id="312:1166">
                   <select
                     id="mobile-order-city"
                     value={city}
@@ -335,7 +335,7 @@ export default function MobileOrderSection() {
                       if (errors.city) setErrors((prev) => ({ ...prev, city: undefined }));
                     }}
                     aria-invalid={Boolean(errors.city)}
-                    className={`mobile-order-field-select font-helvetica-neue-cyr--roman absolute inset-0 flex h-[47.713px] w-[169.462px] cursor-pointer appearance-none items-center rounded-[24.679px] border-0 bg-white pb-[17.275px] pl-[18.921px] pr-[26.324px] pt-[18.098px] text-[11.517px] not-italic leading-[1.175] text-[#393939] outline-none ${errors.city ? 'ring-1 ring-[#d93025]' : ''}`}
+                    className={`mobile-order-field-select font-helvetica-neue-cyr--roman absolute inset-0 flex h-[calc(47.713*var(--mf))] w-[calc(169.462*var(--mf))] cursor-pointer appearance-none items-center rounded-[calc(24.679*var(--mf))] border-0 bg-white pb-[calc(17.275*var(--mf))] pl-[calc(18.921*var(--mf))] pr-[calc(26.324*var(--mf))] pt-[calc(18.098*var(--mf))] text-[calc(11.517*var(--mf))] not-italic leading-[1.175] text-[#393939] outline-none ${errors.city ? 'ring-1 ring-[#d93025]' : ''}`}
                     data-node-id="312:1167"
                   >
                     <option value="">Ваше місто</option>
@@ -350,15 +350,15 @@ export default function MobileOrderSection() {
                 <FieldError message={errors.city} />
               </div>
 
-              <div className="relative h-[64.165px] w-[171.085px] shrink-0" data-node-id="312:1169">
+              <div className="relative h-[calc(64.165*var(--mf))] w-[calc(171.085*var(--mf))] shrink-0" data-node-id="312:1169">
                 <label
                   htmlFor="mobile-order-branch"
-                  className="font-helvetica-neue-cyr--roman absolute left-[14.787px] top-0 m-0 flex h-[14.807px] items-center text-[11.517px] not-italic leading-[1.175] text-[#2a2a2a] [word-break:break-word]"
+                  className="font-helvetica-neue-cyr--roman absolute left-[calc(14.787*var(--mf))] top-0 m-0 flex h-[calc(14.807*var(--mf))] items-center text-[calc(11.517*var(--mf))] not-italic leading-[1.175] text-[#2a2a2a] [word-break:break-word]"
                   data-node-id="312:1170"
                 >
                   Нова Пошта (відділення)*
                 </label>
-                <div className="absolute left-0 top-[16.44px] h-[47.713px] w-[169.462px]" data-node-id="312:1171">
+                <div className="absolute left-0 top-[calc(16.44*var(--mf))] h-[calc(47.713*var(--mf))] w-[calc(169.462*var(--mf))]" data-node-id="312:1171">
                   <select
                     id="mobile-order-branch"
                     value={branch}
@@ -368,7 +368,7 @@ export default function MobileOrderSection() {
                     }}
                     disabled={!city}
                     aria-invalid={Boolean(errors.branch)}
-                    className={`mobile-order-field-select font-helvetica-neue-cyr--roman absolute inset-0 flex h-[47.713px] w-[169.462px] cursor-pointer appearance-none items-center rounded-[24.679px] border-0 bg-white pb-[17.275px] pl-[18.897px] pr-[26.324px] pt-[18.098px] text-[11.517px] not-italic leading-[1.175] text-[#393939] outline-none disabled:cursor-not-allowed disabled:opacity-60 ${errors.branch ? 'ring-1 ring-[#d93025]' : ''}`}
+                    className={`mobile-order-field-select font-helvetica-neue-cyr--roman absolute inset-0 flex h-[calc(47.713*var(--mf))] w-[calc(169.462*var(--mf))] cursor-pointer appearance-none items-center rounded-[calc(24.679*var(--mf))] border-0 bg-white pb-[calc(17.275*var(--mf))] pl-[calc(18.897*var(--mf))] pr-[calc(26.324*var(--mf))] pt-[calc(18.098*var(--mf))] text-[calc(11.517*var(--mf))] not-italic leading-[1.175] text-[#393939] outline-none disabled:cursor-not-allowed disabled:opacity-60 ${errors.branch ? 'ring-1 ring-[#d93025]' : ''}`}
                     data-node-id="312:1174"
                   >
                     <option value="">№ Відділення</option>
@@ -389,16 +389,16 @@ export default function MobileOrderSection() {
           <button
             type="button"
             onClick={handleOrder}
-            className="mobile-order-cta-btn flex h-[52.835px] w-full shrink-0 cursor-pointer items-center gap-[66.633px] rounded-[30.026px] border-0 bg-[#022ec9] pb-[10.694px] pl-[98.716px] pr-[16.453px] pt-[11.517px]"
+            className="mobile-order-cta-btn flex h-[calc(52.835*var(--mf))] w-full shrink-0 cursor-pointer items-center gap-[calc(66.633*var(--mf))] rounded-[calc(30.026*var(--mf))] border-0 bg-[#022ec9] pb-[calc(10.694*var(--mf))] pl-[calc(98.716*var(--mf))] pr-[calc(16.453*var(--mf))] pt-[calc(11.517*var(--mf))]"
             data-node-id="312:1175"
           >
             <span
-              className="font-helvetica-neue-cyr--roman flex h-[12.339px] w-[148.896px] shrink-0 items-center justify-center text-center text-[14.807px] not-italic leading-normal text-white [word-break:break-word]"
+              className="font-helvetica-neue-cyr--roman flex h-[calc(12.339*var(--mf))] w-[calc(148.896*var(--mf))] shrink-0 items-center justify-center text-center text-[calc(14.807*var(--mf))] not-italic leading-normal text-white [word-break:break-word]"
               data-node-id="312:1176"
             >
               Замовити зараз
             </span>
-            <span className="flex size-[25.405px] shrink-0 items-center justify-center" data-node-id="312:1177">
+            <span className="flex size-[calc(25.405*var(--mf))] shrink-0 items-center justify-center" data-node-id="312:1177">
               <AssetImg
                 src={ASSETS.ctaIcon}
                 alt=""
@@ -410,21 +410,21 @@ export default function MobileOrderSection() {
           </button>
 
           {/* Payment buttons — 312:1180 */}
-          <div className="flex w-full shrink-0 items-center gap-[17.275px]" data-node-id="312:1180">
+          <div className="flex w-full shrink-0 items-center gap-[calc(17.275*var(--mf))]" data-node-id="312:1180">
             <button
               type="button"
               onClick={handleApplePay}
-              className="mobile-order-pay-btn flex h-[46.067px] w-[169.462px] shrink-0 cursor-pointer items-center justify-center rounded-[24.679px] border-0 bg-[#f3f3f3] py-[13.985px] pl-[58.407px] pr-[60.875px]"
+              className="mobile-order-pay-btn flex h-[calc(46.067*var(--mf))] w-[calc(169.462*var(--mf))] shrink-0 cursor-pointer items-center justify-center rounded-[calc(24.679*var(--mf))] border-0 bg-[#f3f3f3] py-[calc(13.985*var(--mf))] pl-[calc(58.407*var(--mf))] pr-[calc(60.875*var(--mf))]"
               data-node-id="312:1181"
             >
               <span className="relative inline-grid shrink-0 grid-cols-[max-content] grid-rows-[max-content] place-items-start leading-[0]">
                 <span
-                  className="font-helvetica-neue-cyr--roman col-start-1 row-start-1 ml-[23.05px] mt-[3.29px] flex h-[14.807px] w-[27.147px] items-center text-[14.807px] not-italic leading-[1.02] text-black [word-break:break-word]"
+                  className="font-helvetica-neue-cyr--roman col-start-1 row-start-1 ml-[calc(23.05*var(--mf))] mt-[calc(3.29*var(--mf))] flex h-[calc(14.807*var(--mf))] w-[calc(27.147*var(--mf))] items-center text-[calc(14.807*var(--mf))] not-italic leading-[1.02] text-black [word-break:break-word]"
                   data-node-id="312:1183"
                 >
                   Pay
                 </span>
-                <span className="col-start-1 row-start-1 ml-0 mt-0 flex h-[17.275px] w-[14.555px] items-center justify-center" data-node-id="312:1184">
+                <span className="col-start-1 row-start-1 ml-0 mt-0 flex h-[calc(17.275*var(--mf))] w-[calc(14.555*var(--mf))] items-center justify-center" data-node-id="312:1184">
                   <AssetImg
                     src={ASSETS.applePayIcon}
                     alt=""
@@ -439,17 +439,17 @@ export default function MobileOrderSection() {
             <button
               type="button"
               onClick={handleGooglePay}
-              className="mobile-order-pay-btn flex h-[46.067px] w-[169.462px] shrink-0 cursor-pointer items-center justify-center rounded-[24.679px] border-0 bg-[#f3f3f3] pb-[13.985px] pl-[53.471px] pr-[57.584px] pt-[13.162px]"
+              className="mobile-order-pay-btn flex h-[calc(46.067*var(--mf))] w-[calc(169.462*var(--mf))] shrink-0 cursor-pointer items-center justify-center rounded-[calc(24.679*var(--mf))] border-0 bg-[#f3f3f3] pb-[calc(13.985*var(--mf))] pl-[calc(53.471*var(--mf))] pr-[calc(57.584*var(--mf))] pt-[calc(13.162*var(--mf))]"
               data-node-id="312:1185"
             >
               <span className="relative inline-grid shrink-0 grid-cols-[max-content] grid-rows-[max-content] place-items-start leading-[0]">
                 <span
-                  className="font-helvetica-neue-cyr--roman col-start-1 row-start-1 ml-[26.35px] mt-[4.11px] flex h-[13.985px] w-[32.083px] items-center text-[14.807px] not-italic leading-[1.02] text-black [word-break:break-word]"
+                  className="font-helvetica-neue-cyr--roman col-start-1 row-start-1 ml-[calc(26.35*var(--mf))] mt-[calc(4.11*var(--mf))] flex h-[calc(13.985*var(--mf))] w-[calc(32.083*var(--mf))] items-center text-[calc(14.807*var(--mf))] not-italic leading-[1.02] text-black [word-break:break-word]"
                   data-node-id="312:1187"
                 >
                   Pay
                 </span>
-                <span className="col-start-1 row-start-1 ml-0 mt-0 flex size-[18.921px] items-center justify-center" data-node-id="312:1188">
+                <span className="col-start-1 row-start-1 ml-0 mt-0 flex size-[calc(18.921*var(--mf))] items-center justify-center" data-node-id="312:1188">
                   <AssetImg
                     src={ASSETS.googlePayIcon}
                     alt=""
@@ -465,11 +465,11 @@ export default function MobileOrderSection() {
 
         {/* Footer — 312:1193 */}
         <div
-          className="flex w-[312.599px] shrink-0 items-start justify-between"
+          className="flex w-[calc(312.599*var(--mf))] shrink-0 items-start justify-between"
           data-node-id="312:1193"
         >
-          <div className="flex shrink-0 items-center gap-[18.098px]" data-node-id="312:1194">
-            <div className="relative h-[25.093px] w-[32.32px] shrink-0" data-node-id="312:1195" data-name="mastercard logo">
+          <div className="flex shrink-0 items-center gap-[calc(18.098*var(--mf))]" data-node-id="312:1194">
+            <div className="relative h-[calc(25.093*var(--mf))] w-[calc(32.32*var(--mf))] shrink-0" data-node-id="312:1195" data-name="mastercard logo">
               <AssetImg
                 src={ASSETS.mastercard}
                 alt="Mastercard"
@@ -478,7 +478,7 @@ export default function MobileOrderSection() {
                 height={25.093}
               />
             </div>
-            <div className="relative h-[16.756px] w-[51.89px] shrink-0" data-node-id="312:1200" data-name="visa logo">
+            <div className="relative h-[calc(16.756*var(--mf))] w-[calc(51.89*var(--mf))] shrink-0" data-node-id="312:1200" data-name="visa logo">
               <AssetImg
                 src={ASSETS.visa}
                 alt="Visa"
@@ -489,16 +489,16 @@ export default function MobileOrderSection() {
             </div>
           </div>
           <p
-            className="font-helvetica-neue-cyr--roman m-0 h-[26.324px] w-[180.156px] shrink-0 text-[#272727] not-italic leading-[0] [word-break:break-word]"
+            className="font-helvetica-neue-cyr--roman m-0 h-[calc(26.324*var(--mf))] w-[calc(180.156*var(--mf))] shrink-0 text-[#272727] not-italic leading-[0] [word-break:break-word]"
             data-node-id="312:1202"
           >
-            <span className="text-[10.161px] leading-[1.175]">{`Натискаючи кнопку, ви погоджуєтесь з `}</span>
-            <span className="text-[10.161px] leading-[1.175] underline decoration-solid decoration-from-font [text-decoration-skip-ink:none] [text-underline-position:from-font]">
+            <span className="text-[calc(10.161*var(--mf))] leading-[1.175]">{`Натискаючи кнопку, ви погоджуєтесь з `}</span>
+            <span className="text-[calc(10.161*var(--mf))] leading-[1.175] underline decoration-solid decoration-from-font [text-decoration-skip-ink:none] [text-underline-position:from-font]">
               політикою конфіденційності
             </span>
           </p>
         </div>
       </div>
-    </MobileScaleFrame>
+    </MobileFluidSection>
   );
 }

@@ -13,7 +13,7 @@ async function auditWidth(page, width) {
     const mobileStyle = mobileLayout ? getComputedStyle(mobileLayout) : null;
     const desktopStyle = desktopLayout ? getComputedStyle(desktopLayout) : null;
     const heroFrame = document.querySelector('.hero-mobile');
-    const heroCanvas = document.querySelector('.hero-mobile .mobile-scale-canvas');
+    const heroCanvas = document.querySelector('.hero-mobile .mobile-fluid-canvas');
     const heroRect = heroCanvas?.getBoundingClientRect() ?? heroFrame?.getBoundingClientRect();
     const orderSection = document.getElementById('mobile-order-section');
 
@@ -44,7 +44,7 @@ function pass(report) {
     );
   }
 
-  const expectedHeroWidth = Math.min(report.viewportWidth, 430);
+  const expectedHeroWidth = report.viewportWidth;
   const heroFills =
     report.heroWidth != null && Math.abs(report.heroWidth - expectedHeroWidth) <= 2;
   const noSideGap = report.sideGap != null && report.sideGap <= 1;

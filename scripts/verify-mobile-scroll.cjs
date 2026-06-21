@@ -22,9 +22,8 @@ async function auditViewport(page, viewport) {
 
   return page.evaluate(({ width, height }) => {
     const heroFrame = document.querySelector('.hero-mobile');
-    const heroCanvas = document.querySelector('.hero-mobile .mobile-scale-canvas');
-    const scaleFrames = [...document.querySelectorAll('.site-layout--mobile .mobile-scale-frame')];
-    const fluidSections = [...document.querySelectorAll('.site-layout--mobile .mobile-section-fluid')];
+    const heroCanvas = document.querySelector('.hero-mobile .mobile-fluid-canvas');
+    const fluidSections = [...document.querySelectorAll('.site-layout--mobile .mobile-fluid-section')];
 
     function auditScroll(el, label) {
       if (!el) return null;
@@ -73,7 +72,7 @@ async function auditViewport(page, viewport) {
         document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
       hero: auditScroll(heroFrame, 'hero-frame'),
       heroCanvas: auditScroll(heroCanvas, 'hero-canvas'),
-      scaleFrameCount: scaleFrames.length,
+      fluidSectionCount: fluidSections.length,
       nestedVerticalScrollers: nestedScrollers,
       sideGap,
       heroWidth: heroRect?.width ?? null,
@@ -82,7 +81,7 @@ async function auditViewport(page, viewport) {
 }
 
 function pass(report) {
-  const expectedHeroWidth = Math.min(report.viewport.width, 430);
+  const expectedHeroWidth = report.viewport.width;
   const heroFills =
     report.heroWidth != null && Math.abs(report.heroWidth - expectedHeroWidth) <= 2;
   const noSideGap = report.sideGap != null && report.sideGap <= 1;
