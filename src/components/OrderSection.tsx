@@ -1,10 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import OrderDatalistField from '@/components/order/OrderDatalistField';
+import { useState } from 'react';
 import { LEGAL_LINK_PROPS, PRIVACY_POLICY_URL } from '@/constants/legalLinks';
-import { NOVA_POSHTA_BRANCHES, UKRAINIAN_CITIES } from '@/data/novaPoshtaBranches';
-import { getBranchOptions } from '@/utils/orderBranchOptions';
 
 const ASSETS = {
   productPack: '/assets/order-product-pack.png',
@@ -12,8 +9,6 @@ const ASSETS = {
   quantityPlus: '/assets/order-quantity-plus.svg',
   quantityMinus: '/assets/order-quantity-minus.svg',
   ctaIcon: '/assets/order-cta-icon.svg',
-  dropdownArrowCity: '/assets/order-dropdown-arrow-city.svg',
-  dropdownArrowBranch: '/assets/order-dropdown-arrow-branch.svg',
   applePayIcon: '/assets/order-apple-pay-icon.svg',
   googlePayIcon: '/assets/order-google-pay-icon.svg',
   visa: '/assets/order-visa.svg',
@@ -43,35 +38,12 @@ function AssetImg({
   return <img alt={alt} className={className} src={src} style={style} />;
 }
 
-function DropdownChevron({ nodeId, src }: { nodeId: string; src: string }) {
-  return (
-    <div
-      className="pointer-events-none absolute right-[32px] top-1/2 flex h-px w-0 -translate-y-1/2 items-center justify-center"
-      aria-hidden
-    >
-      <div className="flex-none rotate-90">
-        <div className="relative h-0 w-px" data-node-id={nodeId}>
-          <div className="absolute inset-[-5.52px_-75%_-5.52px_-452.3%]">
-            <AssetImg src={src} className="block max-w-none size-full" />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function OrderSection() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('+380');
   const [city, setCity] = useState('');
   const [branch, setBranch] = useState('');
   const [quantity, setQuantity] = useState(1);
-
-  const branches = getBranchOptions(city, NOVA_POSHTA_BRANCHES);
-
-  useEffect(() => {
-    setBranch('');
-  }, [city]);
 
   const decreaseQuantity = () => setQuantity((value) => Math.max(1, value - 1));
   const increaseQuantity = () => setQuantity((value) => value + 1);
@@ -273,15 +245,13 @@ export default function OrderSection() {
                     Місто*
                   </label>
                   <div className="absolute left-0 top-[20px] h-[58px] w-[206px]" data-node-id="294:104">
-                    <OrderDatalistField
+                    <input
                       id="order-city"
+                      type="text"
                       value={city}
-                      onChange={setCity}
-                      options={UKRAINIAN_CITIES}
-                      placeholder="Ваше місто"
-                      className="order-field-select font-helvetica-neue-cyr--roman absolute left-0 top-0 flex h-[58px] w-[206px] cursor-pointer appearance-none items-center rounded-[30px] border-0 bg-white pl-[23px] pr-[32px] text-[14px] not-italic leading-[1.175] text-[#565656] outline-none"
+                      onChange={(event) => setCity(event.target.value)}
+                      className="order-field-input font-helvetica-neue-cyr--roman absolute left-0 top-0 h-[58px] w-[206px] rounded-[30px] border-0 bg-white pl-[23px] pr-[23px] text-[14px] not-italic leading-[1.175] text-[#565656] outline-none"
                       data-node-id="278:499"
-                      chevron={<DropdownChevron nodeId="278:487" src={ASSETS.dropdownArrowCity} />}
                     />
                   </div>
                 </div>
@@ -295,16 +265,13 @@ export default function OrderSection() {
                     Нова Пошта (відділення)*
                   </label>
                   <div className="absolute left-0 top-[20px] h-[58px] w-[206px]" data-node-id="294:106">
-                    <OrderDatalistField
+                    <input
                       id="order-branch"
+                      type="text"
                       value={branch}
-                      onChange={setBranch}
-                      options={branches}
-                      placeholder="№ Відділення"
-                      disabled={!city.trim()}
-                      className="order-field-select font-helvetica-neue-cyr--roman absolute right-0 top-0 flex h-[58px] w-[206px] cursor-pointer appearance-none items-center rounded-[30px] border-0 bg-white pl-[23px] pr-[32px] text-[14px] not-italic leading-[1.175] text-[#565656] outline-none disabled:cursor-not-allowed disabled:opacity-60"
+                      onChange={(event) => setBranch(event.target.value)}
+                      className="order-field-input font-helvetica-neue-cyr--roman absolute right-0 top-0 h-[58px] w-[206px] rounded-[30px] border-0 bg-white pl-[23px] pr-[23px] text-[14px] not-italic leading-[1.175] text-[#565656] outline-none"
                       data-node-id="278:480"
-                      chevron={<DropdownChevron nodeId="278:486" src={ASSETS.dropdownArrowBranch} />}
                     />
                   </div>
                 </div>

@@ -82,6 +82,42 @@ const OFFER_AGREEMENT_URL = '/legal/offer-agreement.pdf';
     await browser.close();
   }
 
+  async function runPlainTextFieldChecks(width, prefix) {
+    const browser = await chromium.launch();
+    const page = await browser.newPage({ viewport: { width, height: 900 } });
+    await page.goto(BASE_URL, { waitUntil: 'networkidle', timeout: 60000 });
+    await page.waitForTimeout(1500);
+
+    const fields = await page.evaluate((isDesktop) => {
+      const cityId = isDesktop ? 'order-city' : 'mobile-order-city';
+      const branchId = isDesktop ? 'order-branch' : 'mobile-order-branch';
+      const city = document.getElementById(cityId);
+      const branch = document.getElementById(branchId);
+      const datalistCount = document.querySelectorAll('datalist').length;
+      return {
+        cityType: city?.getAttribute('type'),
+        branchType: branch?.getAttribute('type'),
+        cityHasList: city?.hasAttribute('list'),
+        branchHasList: branch?.hasAttribute('list'),
+        datalistCount,
+        nameDefault: document.getElementById(isDesktop ? 'order-name' : 'mobile-order-name')?.value,
+        phoneDefault: document.getElementById(isDesktop ? 'order-phone' : 'mobile-order-phone')?.value,
+      };
+    }, width >= 768);
+
+    const pass =
+      fields.cityType === 'text' &&
+      fields.branchType === 'text' &&
+      !fields.cityHasList &&
+      !fields.branchHasList &&
+      fields.datalistCount === 0 &&
+      fields.nameDefault === '' &&
+      fields.phoneDefault === '+380';
+
+    record(`${prefix}-plain-text-fields`, pass, fields);
+    await browser.close();
+  }
+
   async function runCustomCityBranchTest(width, prefix, orderSectionId) {
     const browser = await chromium.launch();
     const page = await browser.newPage({ viewport: { width, height: 900 } });
@@ -125,6 +161,9 @@ const OFFER_AGREEMENT_URL = '/legal/offer-agreement.pdf';
 
   await runLegalAndFooterChecks(1440, 'desktop');
   await runLegalAndFooterChecks(390, 'mobile');
+
+  await runPlainTextFieldChecks(1440, 'desktop');
+  await runPlainTextFieldChecks(390, 'mobile');
 
   await runCustomCityBranchTest(1440, 'desktop', 'desktop-order-section');
   await runCustomCityBranchTest(390, 'mobile', 'mobile-order-section');

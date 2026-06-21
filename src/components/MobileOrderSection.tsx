@@ -1,11 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import MobileFluidSection from '@/components/MobileFluidSection';
-import OrderDatalistField from '@/components/order/OrderDatalistField';
 import { LEGAL_LINK_PROPS, PRIVACY_POLICY_URL } from '@/constants/legalLinks';
-import { MOBILE_NOVA_POSHTA_BRANCHES, MOBILE_UKRAINIAN_CITIES } from '@/data/mobileNovaPoshtaBranches';
-import { getBranchOptions } from '@/utils/orderBranchOptions';
 
 const ASSETS = {
   product: '/assets/mobile-block3-product.png',
@@ -13,8 +10,6 @@ const ASSETS = {
   quantityPlus: '/assets/mobile-block3-quantity-plus.svg',
   quantityMinus: '/assets/mobile-block3-quantity-minus.svg',
   ctaIcon: '/assets/mobile-block3-cta-icon.svg',
-  dropdownArrowCity: '/assets/mobile-block3-dropdown-arrow-city.svg',
-  dropdownArrowBranch: '/assets/mobile-block3-dropdown-arrow-branch.svg',
   applePayIcon: '/assets/mobile-block3-apple-pay-icon.svg',
   googlePayIcon: '/assets/mobile-block3-google-pay-icon.svg',
   mastercard: '/assets/mobile-block3-mastercard.svg',
@@ -44,23 +39,6 @@ function AssetImg({
   return <img alt={alt} className={className} src={src} />;
 }
 
-function MobileDropdownChevron({ nodeId, src }: { nodeId: string; src: string }) {
-  return (
-    <div
-      className="pointer-events-none absolute right-[calc(26.324*var(--mf))] top-1/2 flex h-[calc(0.823*var(--mf))] w-0 -translate-y-1/2 items-center justify-center"
-      aria-hidden
-    >
-      <div className="flex-none rotate-90">
-        <div className="relative h-0 w-[calc(0.823*var(--mf))]" data-node-id={nodeId}>
-          <div className="absolute inset-[calc(-4.54*var(--mf))_-75%_calc(-4.54*var(--mf))_-452.3%]">
-            <AssetImg src={src} className="block max-w-none size-full" />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function FieldError({ message }: { message?: string }) {
   if (!message) return null;
   return (
@@ -77,12 +55,6 @@ export default function MobileOrderSection() {
   const [branch, setBranch] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [errors, setErrors] = useState<FormErrors>({});
-
-  const branches = getBranchOptions(city, MOBILE_NOVA_POSHTA_BRANCHES);
-
-  useEffect(() => {
-    setBranch('');
-  }, [city]);
 
   const decreaseQuantity = () => setQuantity((value) => Math.max(1, value - 1));
   const increaseQuantity = () => setQuantity((value) => value + 1);
@@ -325,19 +297,17 @@ export default function MobileOrderSection() {
                   Місто*
                 </label>
                 <div className="absolute left-0 top-[calc(16.44*var(--mf))] h-[calc(47.713*var(--mf))] w-[calc(169.462*var(--mf))]" data-node-id="312:1166">
-                  <OrderDatalistField
+                  <input
                     id="mobile-order-city"
+                    type="text"
                     value={city}
-                    onChange={(value) => {
-                      setCity(value);
+                    onChange={(event) => {
+                      setCity(event.target.value);
                       if (errors.city) setErrors((prev) => ({ ...prev, city: undefined }));
                     }}
-                    options={MOBILE_UKRAINIAN_CITIES}
-                    placeholder="Ваше місто"
                     aria-invalid={Boolean(errors.city)}
-                    className={`mobile-order-field-select font-helvetica-neue-cyr--roman absolute inset-0 flex h-[calc(47.713*var(--mf))] w-[calc(169.462*var(--mf))] cursor-pointer appearance-none items-center rounded-[calc(24.679*var(--mf))] border-0 bg-white pb-[calc(17.275*var(--mf))] pl-[calc(18.921*var(--mf))] pr-[calc(26.324*var(--mf))] pt-[calc(18.098*var(--mf))] text-[calc(11.517*var(--mf))] not-italic leading-[1.175] text-[#393939] outline-none ${errors.city ? 'ring-1 ring-[#d93025]' : ''}`}
+                    className={`mobile-order-field-input font-helvetica-neue-cyr--roman absolute inset-0 flex h-[calc(47.713*var(--mf))] w-[calc(169.462*var(--mf))] items-center rounded-[calc(24.679*var(--mf))] border-0 bg-white pl-[calc(18.898*var(--mf))] pr-[calc(18.898*var(--mf))] text-[calc(11.517*var(--mf))] not-italic leading-[1.175] text-[#393939] outline-none ${errors.city ? 'ring-1 ring-[#d93025]' : ''}`}
                     data-node-id="312:1167"
-                    chevron={<MobileDropdownChevron nodeId="312:1168" src={ASSETS.dropdownArrowCity} />}
                   />
                 </div>
                 <FieldError message={errors.city} />
@@ -352,20 +322,17 @@ export default function MobileOrderSection() {
                   Нова Пошта (відділення)*
                 </label>
                 <div className="absolute left-0 top-[calc(16.44*var(--mf))] h-[calc(47.713*var(--mf))] w-[calc(169.462*var(--mf))]" data-node-id="312:1171">
-                  <OrderDatalistField
+                  <input
                     id="mobile-order-branch"
+                    type="text"
                     value={branch}
-                    onChange={(value) => {
-                      setBranch(value);
+                    onChange={(event) => {
+                      setBranch(event.target.value);
                       if (errors.branch) setErrors((prev) => ({ ...prev, branch: undefined }));
                     }}
-                    options={branches}
-                    placeholder="№ Відділення"
-                    disabled={!city.trim()}
                     aria-invalid={Boolean(errors.branch)}
-                    className={`mobile-order-field-select font-helvetica-neue-cyr--roman absolute inset-0 flex h-[calc(47.713*var(--mf))] w-[calc(169.462*var(--mf))] cursor-pointer appearance-none items-center rounded-[calc(24.679*var(--mf))] border-0 bg-white pb-[calc(17.275*var(--mf))] pl-[calc(18.897*var(--mf))] pr-[calc(26.324*var(--mf))] pt-[calc(18.098*var(--mf))] text-[calc(11.517*var(--mf))] not-italic leading-[1.175] text-[#393939] outline-none disabled:cursor-not-allowed disabled:opacity-60 ${errors.branch ? 'ring-1 ring-[#d93025]' : ''}`}
+                    className={`mobile-order-field-input font-helvetica-neue-cyr--roman absolute inset-0 flex h-[calc(47.713*var(--mf))] w-[calc(169.462*var(--mf))] items-center rounded-[calc(24.679*var(--mf))] border-0 bg-white pl-[calc(18.898*var(--mf))] pr-[calc(18.898*var(--mf))] text-[calc(11.517*var(--mf))] not-italic leading-[1.175] text-[#393939] outline-none ${errors.branch ? 'ring-1 ring-[#d93025]' : ''}`}
                     data-node-id="312:1174"
-                    chevron={<MobileDropdownChevron nodeId="312:1173" src={ASSETS.dropdownArrowBranch} />}
                   />
                 </div>
                 <FieldError message={errors.branch} />
