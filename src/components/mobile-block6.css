@@ -2,8 +2,8 @@
 
 .mobile-block6-root {
   position: relative;
-  isolation: isolate;
-  overflow-x: hidden;
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 .mobile-block6-trigger {

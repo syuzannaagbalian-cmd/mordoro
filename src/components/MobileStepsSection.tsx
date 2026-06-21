@@ -57,7 +57,7 @@ export default function MobileStepsSection() {
       data-node-id="312:1103"
       data-name="блок 2"
       aria-label="How it works steps"
-      canvasClassName="relative overflow-x-clip bg-gradient-to-b from-[#c6c8e2] to-[#e1e0e7]"
+      canvasClassName="relative overflow-hidden bg-gradient-to-b from-[#c6c8e2] to-[#e1e0e7]"
     >
       {/* Ellipse — 312:1104 */}
       <div className="pointer-events-none absolute left-[-45px] top-[-80px] h-[190px] w-[443px]" data-node-id="312:1104">

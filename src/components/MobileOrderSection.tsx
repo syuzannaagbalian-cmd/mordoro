@@ -126,7 +126,7 @@ export default function MobileOrderSection() {
       data-node-id="312:1129"
       data-name="блок 3"
       aria-label="Morldoro mobile order"
-      canvasClassName="relative overflow-x-clip bg-[#e1e0e7]"
+      canvasClassName="relative overflow-hidden bg-[#e1e0e7]"
     >
       {/* Product image — 312:1130 */}
       <div

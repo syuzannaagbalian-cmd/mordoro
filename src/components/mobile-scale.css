@@ -3,12 +3,17 @@
 .mobile-scale-frame {
   --mobile-design-w: 390;
   --mobile-max-w: 430;
-  --mobile-scale: min(calc(100vw / (var(--mobile-design-w) * 1px)), calc((var(--mobile-max-w) * 1px) / (var(--mobile-design-w) * 1px)));
+  --mobile-scale: min(
+    calc(100vw / (var(--mobile-design-w) * 1px)),
+    calc((var(--mobile-max-w) * 1px) / (var(--mobile-design-w) * 1px))
+  );
   box-sizing: border-box;
+  position: relative;
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
-  height: calc(var(--mobile-design-h) * 1px * var(--mobile-scale));
+  overflow: hidden;
+  overscroll-behavior: none;
+  contain: layout paint;
 }
 
 .mobile-scale-canvas {
@@ -16,14 +21,41 @@
   width: calc(var(--mobile-design-w) * 1px);
   height: calc(var(--mobile-design-h) * 1px);
   margin-inline: auto;
-  transform: scale(var(--mobile-scale));
-  transform-origin: top center;
-  overflow-x: clip;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+/*
+ * iOS Safari: transform:scale keeps the pre-transform box as a scrollable
+ * overflow region. zoom participates in layout and avoids nested page scroll.
+ */
+@supports (zoom: 1) {
+  .mobile-scale-frame {
+    height: auto;
+  }
+
+  .mobile-scale-canvas {
+    zoom: var(--mobile-scale);
+    transform: none;
+  }
+}
+
+@supports not (zoom: 1) {
+  .mobile-scale-frame {
+    height: calc(var(--mobile-design-h) * 1px * var(--mobile-scale));
+  }
+
+  .mobile-scale-canvas {
+    transform: scale(var(--mobile-scale));
+    transform-origin: top center;
+  }
 }
 
 .mobile-section-fluid {
   box-sizing: border-box;
+  position: relative;
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
+  overscroll-behavior: none;
 }

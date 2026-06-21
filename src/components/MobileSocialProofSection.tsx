@@ -136,7 +136,7 @@ export default function MobileSocialProofSection() {
       data-node-id="312:1398"
       data-name="блок 5"
       aria-label="Morldoro social proof"
-      canvasClassName="relative bg-[#e1e0e7]"
+      canvasClassName="relative overflow-hidden bg-[#e1e0e7]"
     >
       <p
         className="font-sf-pro--light-italic absolute left-0 top-[113px] m-0 flex h-[43px] w-[390px] items-center justify-center text-center text-[32px] italic leading-[1.08] text-[#022ec9] [word-break:break-word]"

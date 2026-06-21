@@ -71,7 +71,7 @@ export default function HeroMobile() {
       data-node-id="295:405"
       data-name="Херо блок"
       aria-label="Morldoro hero mobile"
-      canvasClassName="relative overflow-x-clip bg-[#e1e0e7]"
+      canvasClassName="relative overflow-hidden bg-[#e1e0e7]"
     >
       {/* Background — 312:1024 */}
       <div

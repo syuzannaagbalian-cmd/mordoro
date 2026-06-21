@@ -61,7 +61,10 @@ function pass(report) {
 (async () => {
   const browser = await chromium.launch();
   const page = await browser.newPage();
-  await page.goto('http://localhost:3000', { waitUntil: 'networkidle', timeout: 60000 });
+  await page.goto(process.env.BASE_URL || 'http://localhost:3000', {
+    waitUntil: 'networkidle',
+    timeout: 60000,
+  });
 
   let allPass = true;
   for (const width of WIDTHS) {

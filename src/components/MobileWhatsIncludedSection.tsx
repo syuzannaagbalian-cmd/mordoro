@@ -68,7 +68,7 @@ export default function MobileWhatsIncludedSection() {
       data-node-id="312:1204"
       data-name="блок 4"
       aria-label="Що ви отримуєте"
-      canvasClassName="relative overflow-x-clip bg-[#e1e0e7]"
+      canvasClassName="relative overflow-hidden bg-[#e1e0e7]"
     >
       {/* Product composition — 312:1396 */}
       <div className="pointer-events-none absolute left-[-112px] top-[150px] flex h-[439.897px] w-[1244.732px] items-center justify-center">
