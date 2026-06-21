@@ -102,6 +102,9 @@ const OFFER_AGREEMENT_URL = '/legal/offer-agreement.pdf';
         datalistCount,
         nameDefault: document.getElementById(isDesktop ? 'order-name' : 'mobile-order-name')?.value,
         phoneDefault: document.getElementById(isDesktop ? 'order-phone' : 'mobile-order-phone')?.value,
+        namePlaceholder: document.getElementById(isDesktop ? 'order-name' : 'mobile-order-name')?.getAttribute('placeholder'),
+        cityPlaceholder: document.getElementById(isDesktop ? 'order-city' : 'mobile-order-city')?.getAttribute('placeholder'),
+        branchPlaceholder: document.getElementById(isDesktop ? 'order-branch' : 'mobile-order-branch')?.getAttribute('placeholder'),
       };
     }, width >= 768);
 
@@ -112,7 +115,10 @@ const OFFER_AGREEMENT_URL = '/legal/offer-agreement.pdf';
       !fields.branchHasList &&
       fields.datalistCount === 0 &&
       fields.nameDefault === '' &&
-      fields.phoneDefault === '+380';
+      fields.phoneDefault === '+380' &&
+      fields.namePlaceholder === "Ваше ім'я" &&
+      fields.cityPlaceholder === 'Ваше місто' &&
+      fields.branchPlaceholder === '№ відділення';
 
     record(`${prefix}-plain-text-fields`, pass, fields);
     await browser.close();

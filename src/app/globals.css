@@ -239,6 +239,7 @@ body {
 
 .order-field-input::placeholder {
   color: #565656;
+  opacity: 1;
 }
 
 .order-field-select:invalid,
@@ -272,6 +273,7 @@ body {
 
 .mobile-order-field-input::placeholder {
   color: #393939;
+  opacity: 1;
 }
 
 .mobile-order-field-select:invalid,

@@ -252,6 +252,7 @@ export default function MobileOrderSection() {
                     setName(event.target.value);
                     if (errors.name) setErrors((prev) => ({ ...prev, name: undefined }));
                   }}
+                  placeholder="Ваше ім'я"
                   aria-invalid={Boolean(errors.name)}
                   className={`mobile-order-field-input font-helvetica-neue-cyr--roman absolute inset-0 flex h-[calc(47.713*var(--mf))] w-[calc(356.199*var(--mf))] items-center rounded-[calc(24.679*var(--mf))] border-0 bg-white pl-[calc(18.898*var(--mf))] pr-[calc(18.898*var(--mf))] text-[calc(11.517*var(--mf))] not-italic leading-[1.175] text-[#393939] outline-none ${errors.name ? 'ring-1 ring-[#d93025]' : ''}`}
                   data-node-id="312:1156"
@@ -305,6 +306,7 @@ export default function MobileOrderSection() {
                       setCity(event.target.value);
                       if (errors.city) setErrors((prev) => ({ ...prev, city: undefined }));
                     }}
+                    placeholder="Ваше місто"
                     aria-invalid={Boolean(errors.city)}
                     className={`mobile-order-field-input font-helvetica-neue-cyr--roman absolute inset-0 flex h-[calc(47.713*var(--mf))] w-[calc(169.462*var(--mf))] items-center rounded-[calc(24.679*var(--mf))] border-0 bg-white pl-[calc(18.898*var(--mf))] pr-[calc(18.898*var(--mf))] text-[calc(11.517*var(--mf))] not-italic leading-[1.175] text-[#393939] outline-none ${errors.city ? 'ring-1 ring-[#d93025]' : ''}`}
                     data-node-id="312:1167"
@@ -330,6 +332,7 @@ export default function MobileOrderSection() {
                       setBranch(event.target.value);
                       if (errors.branch) setErrors((prev) => ({ ...prev, branch: undefined }));
                     }}
+                    placeholder="№ відділення"
                     aria-invalid={Boolean(errors.branch)}
                     className={`mobile-order-field-input font-helvetica-neue-cyr--roman absolute inset-0 flex h-[calc(47.713*var(--mf))] w-[calc(169.462*var(--mf))] items-center rounded-[calc(24.679*var(--mf))] border-0 bg-white pl-[calc(18.898*var(--mf))] pr-[calc(18.898*var(--mf))] text-[calc(11.517*var(--mf))] not-italic leading-[1.175] text-[#393939] outline-none ${errors.branch ? 'ring-1 ring-[#d93025]' : ''}`}
                     data-node-id="312:1174"

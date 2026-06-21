@@ -207,6 +207,7 @@ export default function OrderSection() {
                     type="text"
                     value={name}
                     onChange={(event) => setName(event.target.value)}
+                    placeholder="Ваше ім'я"
                     className="order-field-input font-helvetica-neue-cyr--roman absolute right-0 top-0 h-[58px] w-[433px] rounded-[30px] border-0 bg-white pl-[23px] pr-[23px] text-[14px] not-italic leading-[1.175] text-[#565656] outline-none"
                     data-node-id="278:475"
                   />
@@ -250,6 +251,7 @@ export default function OrderSection() {
                       type="text"
                       value={city}
                       onChange={(event) => setCity(event.target.value)}
+                      placeholder="Ваше місто"
                       className="order-field-input font-helvetica-neue-cyr--roman absolute left-0 top-0 h-[58px] w-[206px] rounded-[30px] border-0 bg-white pl-[23px] pr-[23px] text-[14px] not-italic leading-[1.175] text-[#565656] outline-none"
                       data-node-id="278:499"
                     />
@@ -270,6 +272,7 @@ export default function OrderSection() {
                       type="text"
                       value={branch}
                       onChange={(event) => setBranch(event.target.value)}
+                      placeholder="№ відділення"
                       className="order-field-input font-helvetica-neue-cyr--roman absolute right-0 top-0 h-[58px] w-[206px] rounded-[30px] border-0 bg-white pl-[23px] pr-[23px] text-[14px] not-italic leading-[1.175] text-[#565656] outline-none"
                       data-node-id="278:480"
                     />
