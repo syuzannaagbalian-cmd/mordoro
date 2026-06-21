@@ -62,7 +62,7 @@ function DropdownChevron({ nodeId, src }: { nodeId: string; src: string }) {
 
 export default function OrderSection() {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('+38 095');
+  const [phone, setPhone] = useState('+380');
   const [city, setCity] = useState('');
   const [branch, setBranch] = useState('');
   const [quantity, setQuantity] = useState(1);
@@ -79,7 +79,7 @@ export default function OrderSection() {
   const isFormValid = () =>
     name.trim() &&
     phone.trim() &&
-    phone.trim() !== '+38 095' &&
+    phone.trim() !== '+380' &&
     city.trim() &&
     branch.trim();
 
@@ -235,7 +235,6 @@ export default function OrderSection() {
                     type="text"
                     value={name}
                     onChange={(event) => setName(event.target.value)}
-                    placeholder="|"
                     className="order-field-input font-helvetica-neue-cyr--roman absolute right-0 top-0 h-[58px] w-[433px] rounded-[30px] border-0 bg-white pl-[23px] pr-[23px] text-[14px] not-italic leading-[1.175] text-[#565656] outline-none"
                     data-node-id="278:475"
                   />

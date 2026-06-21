@@ -246,6 +246,13 @@ body {
   color: #565656;
 }
 
+.order-field-select[list]::-webkit-calendar-picker-indicator,
+.order-field-select[list]::-webkit-list-button {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .order-qty-btn {
   transition: opacity 150ms ease;
 }
@@ -277,6 +284,13 @@ body {
 .mobile-order-field-select:invalid,
 .mobile-order-field-select option[value=''] {
   color: #393939;
+}
+
+.mobile-order-field-select[list]::-webkit-calendar-picker-indicator,
+.mobile-order-field-select[list]::-webkit-list-button {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .mobile-order-qty-btn {

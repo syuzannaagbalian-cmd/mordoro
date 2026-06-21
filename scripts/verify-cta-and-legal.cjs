@@ -103,7 +103,7 @@ const OFFER_AGREEMENT_URL = '/legal/offer-agreement.pdf';
     await page.waitForTimeout(500);
 
     await page.fill(nameSelector, 'Test User');
-    await page.fill(phoneSelector, '+38 095 123 4567');
+    await page.fill(phoneSelector, '+380951234567');
     await page.fill(citySelector, 'Custom City');
     await page.fill(branchSelector, 'Custom Branch №99');
 

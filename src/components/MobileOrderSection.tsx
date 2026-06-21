@@ -72,7 +72,7 @@ function FieldError({ message }: { message?: string }) {
 
 export default function MobileOrderSection() {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('+38 095');
+  const [phone, setPhone] = useState('+380');
   const [city, setCity] = useState('');
   const [branch, setBranch] = useState('');
   const [quantity, setQuantity] = useState(1);
@@ -90,7 +90,7 @@ export default function MobileOrderSection() {
   const validate = (): FormErrors => {
     const next: FormErrors = {};
     if (!name.trim()) next.name = "Введіть ім'я";
-    if (!phone.trim() || phone.trim() === '+38 095') next.phone = 'Введіть телефон';
+    if (!phone.trim() || phone.trim() === '+380') next.phone = 'Введіть телефон';
     if (!city.trim()) next.city = 'Введіть місто';
     if (!branch.trim()) next.branch = 'Введіть відділення';
     return next;
@@ -280,7 +280,6 @@ export default function MobileOrderSection() {
                     setName(event.target.value);
                     if (errors.name) setErrors((prev) => ({ ...prev, name: undefined }));
                   }}
-                  placeholder="|"
                   aria-invalid={Boolean(errors.name)}
                   className={`mobile-order-field-input font-helvetica-neue-cyr--roman absolute inset-0 flex h-[calc(47.713*var(--mf))] w-[calc(356.199*var(--mf))] items-center rounded-[calc(24.679*var(--mf))] border-0 bg-white pl-[calc(18.898*var(--mf))] pr-[calc(18.898*var(--mf))] text-[calc(11.517*var(--mf))] not-italic leading-[1.175] text-[#393939] outline-none ${errors.name ? 'ring-1 ring-[#d93025]' : ''}`}
                   data-node-id="312:1156"
