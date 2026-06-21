@@ -4,6 +4,7 @@
 
 import Link from 'next/link';
 import { useCallback, useId, useState } from 'react';
+import { LEGAL_LINK_PROPS, OFFER_AGREEMENT_URL, PRIVACY_POLICY_URL } from '@/constants/legalLinks';
 import './mobile-block6.css';
 
 const ASSETS = {
@@ -254,26 +255,21 @@ export default function MobileFaqFooterSection() {
           </div>
 
           <nav
-            className="font-helvetica-neue-cyr--roman flex w-full flex-col items-center gap-[20px] text-center text-[14px] not-italic leading-normal text-black"
+            className="font-helvetica-neue-cyr--roman flex w-full flex-col items-center gap-[32px] text-center text-[14px] not-italic leading-normal text-black"
             data-node-id="312:1454"
             aria-label="Legal links"
           >
             <a
-              href="/delivery-payment"
-              className="mobile-block6-footer-link h-[15px] w-[159px] shrink-0 underline decoration-solid [text-decoration-skip-ink:none] [text-underline-position:from-font]"
-              data-node-id="312:1455"
-            >
-              Доставка та оплата
-            </a>
-            <a
-              href="/privacy-policy"
+              href={PRIVACY_POLICY_URL}
+              {...LEGAL_LINK_PROPS}
               className="mobile-block6-footer-link h-[15px] w-[208px] shrink-0 underline decoration-solid [text-decoration-skip-ink:none] [text-underline-position:from-font]"
               data-node-id="312:1456"
             >
               Політика конфіденційності
             </a>
             <a
-              href="/offer-agreement"
+              href={OFFER_AGREEMENT_URL}
+              {...LEGAL_LINK_PROPS}
               className="mobile-block6-footer-link h-[14px] shrink-0 whitespace-nowrap underline decoration-solid [text-decoration-skip-ink:none] [text-underline-position:from-font]"
               data-node-id="312:1457"
             >

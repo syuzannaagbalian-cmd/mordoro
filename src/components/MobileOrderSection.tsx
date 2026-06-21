@@ -2,11 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import MobileFluidSection from '@/components/MobileFluidSection';
-import {
-  MOBILE_NOVA_POSHTA_BRANCHES,
-  MOBILE_UKRAINIAN_CITIES,
-  type MobileUkrainianCity,
-} from '@/data/mobileNovaPoshtaBranches';
+import OrderDatalistField from '@/components/order/OrderDatalistField';
+import { LEGAL_LINK_PROPS, PRIVACY_POLICY_URL } from '@/constants/legalLinks';
+import { MOBILE_NOVA_POSHTA_BRANCHES, MOBILE_UKRAINIAN_CITIES } from '@/data/mobileNovaPoshtaBranches';
+import { getBranchOptions } from '@/utils/orderBranchOptions';
 
 const ASSETS = {
   product: '/assets/mobile-block3-product.png',
@@ -79,7 +78,7 @@ export default function MobileOrderSection() {
   const [quantity, setQuantity] = useState(1);
   const [errors, setErrors] = useState<FormErrors>({});
 
-  const branches = city ? MOBILE_NOVA_POSHTA_BRANCHES[city as MobileUkrainianCity] ?? [] : [];
+  const branches = getBranchOptions(city, MOBILE_NOVA_POSHTA_BRANCHES);
 
   useEffect(() => {
     setBranch('');
@@ -92,8 +91,8 @@ export default function MobileOrderSection() {
     const next: FormErrors = {};
     if (!name.trim()) next.name = "Введіть ім'я";
     if (!phone.trim() || phone.trim() === '+38 095') next.phone = 'Введіть телефон';
-    if (!city) next.city = 'Оберіть місто';
-    if (!branch) next.branch = 'Оберіть відділення';
+    if (!city.trim()) next.city = 'Введіть місто';
+    if (!branch.trim()) next.branch = 'Введіть відділення';
     return next;
   };
 
@@ -327,25 +326,20 @@ export default function MobileOrderSection() {
                   Місто*
                 </label>
                 <div className="absolute left-0 top-[calc(16.44*var(--mf))] h-[calc(47.713*var(--mf))] w-[calc(169.462*var(--mf))]" data-node-id="312:1166">
-                  <select
+                  <OrderDatalistField
                     id="mobile-order-city"
                     value={city}
-                    onChange={(event) => {
-                      setCity(event.target.value);
+                    onChange={(value) => {
+                      setCity(value);
                       if (errors.city) setErrors((prev) => ({ ...prev, city: undefined }));
                     }}
+                    options={MOBILE_UKRAINIAN_CITIES}
+                    placeholder="Ваше місто"
                     aria-invalid={Boolean(errors.city)}
                     className={`mobile-order-field-select font-helvetica-neue-cyr--roman absolute inset-0 flex h-[calc(47.713*var(--mf))] w-[calc(169.462*var(--mf))] cursor-pointer appearance-none items-center rounded-[calc(24.679*var(--mf))] border-0 bg-white pb-[calc(17.275*var(--mf))] pl-[calc(18.921*var(--mf))] pr-[calc(26.324*var(--mf))] pt-[calc(18.098*var(--mf))] text-[calc(11.517*var(--mf))] not-italic leading-[1.175] text-[#393939] outline-none ${errors.city ? 'ring-1 ring-[#d93025]' : ''}`}
                     data-node-id="312:1167"
-                  >
-                    <option value="">Ваше місто</option>
-                    {MOBILE_UKRAINIAN_CITIES.map((cityName) => (
-                      <option key={cityName} value={cityName}>
-                        {cityName}
-                      </option>
-                    ))}
-                  </select>
-                  <MobileDropdownChevron nodeId="312:1168" src={ASSETS.dropdownArrowCity} />
+                    chevron={<MobileDropdownChevron nodeId="312:1168" src={ASSETS.dropdownArrowCity} />}
+                  />
                 </div>
                 <FieldError message={errors.city} />
               </div>
@@ -359,26 +353,21 @@ export default function MobileOrderSection() {
                   Нова Пошта (відділення)*
                 </label>
                 <div className="absolute left-0 top-[calc(16.44*var(--mf))] h-[calc(47.713*var(--mf))] w-[calc(169.462*var(--mf))]" data-node-id="312:1171">
-                  <select
+                  <OrderDatalistField
                     id="mobile-order-branch"
                     value={branch}
-                    onChange={(event) => {
-                      setBranch(event.target.value);
+                    onChange={(value) => {
+                      setBranch(value);
                       if (errors.branch) setErrors((prev) => ({ ...prev, branch: undefined }));
                     }}
-                    disabled={!city}
+                    options={branches}
+                    placeholder="№ Відділення"
+                    disabled={!city.trim()}
                     aria-invalid={Boolean(errors.branch)}
                     className={`mobile-order-field-select font-helvetica-neue-cyr--roman absolute inset-0 flex h-[calc(47.713*var(--mf))] w-[calc(169.462*var(--mf))] cursor-pointer appearance-none items-center rounded-[calc(24.679*var(--mf))] border-0 bg-white pb-[calc(17.275*var(--mf))] pl-[calc(18.897*var(--mf))] pr-[calc(26.324*var(--mf))] pt-[calc(18.098*var(--mf))] text-[calc(11.517*var(--mf))] not-italic leading-[1.175] text-[#393939] outline-none disabled:cursor-not-allowed disabled:opacity-60 ${errors.branch ? 'ring-1 ring-[#d93025]' : ''}`}
                     data-node-id="312:1174"
-                  >
-                    <option value="">№ Відділення</option>
-                    {branches.map((branchName) => (
-                      <option key={branchName} value={branchName}>
-                        {branchName}
-                      </option>
-                    ))}
-                  </select>
-                  <MobileDropdownChevron nodeId="312:1173" src={ASSETS.dropdownArrowBranch} />
+                    chevron={<MobileDropdownChevron nodeId="312:1173" src={ASSETS.dropdownArrowBranch} />}
+                  />
                 </div>
                 <FieldError message={errors.branch} />
               </div>
@@ -493,9 +482,13 @@ export default function MobileOrderSection() {
             data-node-id="312:1202"
           >
             <span className="text-[calc(10.161*var(--mf))] leading-[1.175]">{`Натискаючи кнопку, ви погоджуєтесь з `}</span>
-            <span className="text-[calc(10.161*var(--mf))] leading-[1.175] underline decoration-solid decoration-from-font [text-decoration-skip-ink:none] [text-underline-position:from-font]">
+            <a
+              href={PRIVACY_POLICY_URL}
+              {...LEGAL_LINK_PROPS}
+              className="text-[calc(10.161*var(--mf))] leading-[1.175] underline decoration-solid decoration-from-font [text-decoration-skip-ink:none] [text-underline-position:from-font]"
+            >
               політикою конфіденційності
-            </span>
+            </a>
           </p>
         </div>
       </div>

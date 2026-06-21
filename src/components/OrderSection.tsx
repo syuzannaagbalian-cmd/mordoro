@@ -1,11 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import {
-  NOVA_POSHTA_BRANCHES,
-  UKRAINIAN_CITIES,
-  type UkrainianCity,
-} from '@/data/novaPoshtaBranches';
+import OrderDatalistField from '@/components/order/OrderDatalistField';
+import { LEGAL_LINK_PROPS, PRIVACY_POLICY_URL } from '@/constants/legalLinks';
+import { NOVA_POSHTA_BRANCHES, UKRAINIAN_CITIES } from '@/data/novaPoshtaBranches';
+import { getBranchOptions } from '@/utils/orderBranchOptions';
 
 const ASSETS = {
   productPack: '/assets/order-product-pack.png',
@@ -68,7 +67,7 @@ export default function OrderSection() {
   const [branch, setBranch] = useState('');
   const [quantity, setQuantity] = useState(1);
 
-  const branches = city ? NOVA_POSHTA_BRANCHES[city as UkrainianCity] ?? [] : [];
+  const branches = getBranchOptions(city, NOVA_POSHTA_BRANCHES);
 
   useEffect(() => {
     setBranch('');
@@ -77,15 +76,25 @@ export default function OrderSection() {
   const decreaseQuantity = () => setQuantity((value) => Math.max(1, value - 1));
   const increaseQuantity = () => setQuantity((value) => value + 1);
 
+  const isFormValid = () =>
+    name.trim() &&
+    phone.trim() &&
+    phone.trim() !== '+38 095' &&
+    city.trim() &&
+    branch.trim();
+
   const handleOrder = () => {
+    if (!isFormValid()) return;
     console.log('Order submitted', { name, phone, city, branch, quantity });
   };
 
   const handleApplePay = () => {
+    if (!isFormValid()) return;
     console.log('Apple Pay clicked', { name, phone, city, branch, quantity });
   };
 
   const handleGooglePay = () => {
+    if (!isFormValid()) return;
     console.log('Google Pay clicked', { name, phone, city, branch, quantity });
   };
 
@@ -265,21 +274,16 @@ export default function OrderSection() {
                     Місто*
                   </label>
                   <div className="absolute left-0 top-[20px] h-[58px] w-[206px]" data-node-id="294:104">
-                    <select
+                    <OrderDatalistField
                       id="order-city"
                       value={city}
-                      onChange={(event) => setCity(event.target.value)}
+                      onChange={setCity}
+                      options={UKRAINIAN_CITIES}
+                      placeholder="Ваше місто"
                       className="order-field-select font-helvetica-neue-cyr--roman absolute left-0 top-0 flex h-[58px] w-[206px] cursor-pointer appearance-none items-center rounded-[30px] border-0 bg-white pl-[23px] pr-[32px] text-[14px] not-italic leading-[1.175] text-[#565656] outline-none"
                       data-node-id="278:499"
-                    >
-                      <option value="">Ваше місто</option>
-                      {UKRAINIAN_CITIES.map((cityName) => (
-                        <option key={cityName} value={cityName}>
-                          {cityName}
-                        </option>
-                      ))}
-                    </select>
-                    <DropdownChevron nodeId="278:487" src={ASSETS.dropdownArrowCity} />
+                      chevron={<DropdownChevron nodeId="278:487" src={ASSETS.dropdownArrowCity} />}
+                    />
                   </div>
                 </div>
 
@@ -292,22 +296,17 @@ export default function OrderSection() {
                     Нова Пошта (відділення)*
                   </label>
                   <div className="absolute left-0 top-[20px] h-[58px] w-[206px]" data-node-id="294:106">
-                    <select
+                    <OrderDatalistField
                       id="order-branch"
                       value={branch}
-                      onChange={(event) => setBranch(event.target.value)}
-                      disabled={!city}
+                      onChange={setBranch}
+                      options={branches}
+                      placeholder="№ Відділення"
+                      disabled={!city.trim()}
                       className="order-field-select font-helvetica-neue-cyr--roman absolute right-0 top-0 flex h-[58px] w-[206px] cursor-pointer appearance-none items-center rounded-[30px] border-0 bg-white pl-[23px] pr-[32px] text-[14px] not-italic leading-[1.175] text-[#565656] outline-none disabled:cursor-not-allowed disabled:opacity-60"
                       data-node-id="278:480"
-                    >
-                      <option value="">№ Відділення</option>
-                      {branches.map((branchName) => (
-                        <option key={branchName} value={branchName}>
-                          {branchName}
-                        </option>
-                      ))}
-                    </select>
-                    <DropdownChevron nodeId="278:486" src={ASSETS.dropdownArrowBranch} />
+                      chevron={<DropdownChevron nodeId="278:486" src={ASSETS.dropdownArrowBranch} />}
+                    />
                   </div>
                 </div>
               </div>
@@ -418,9 +417,13 @@ export default function OrderSection() {
               data-node-id="278:474"
             >
               <span className="text-[12px] leading-[1.175]">{`Натискаючи кнопку, ви погоджуєтесь з `}</span>
-              <span className="text-[12px] leading-[1.175] underline decoration-solid decoration-from-font [text-decoration-skip-ink:none] [text-underline-position:from-font]">
+              <a
+                href={PRIVACY_POLICY_URL}
+                {...LEGAL_LINK_PROPS}
+                className="text-[12px] leading-[1.175] underline decoration-solid decoration-from-font [text-decoration-skip-ink:none] [text-underline-position:from-font]"
+              >
                 політикою конфіденційності
-              </span>
+              </a>
             </p>
           </div>
         </div>

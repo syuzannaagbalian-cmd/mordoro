@@ -4,6 +4,7 @@
 
 import Link from 'next/link';
 import { useCallback, useId, useState } from 'react';
+import { LEGAL_LINK_PROPS, OFFER_AGREEMENT_URL, PRIVACY_POLICY_URL } from '@/constants/legalLinks';
 
 const ASSETS = {
   bubble: '/assets/faq-bubble.png',
@@ -270,21 +271,16 @@ export default function FaqFooterSection() {
               aria-label="Legal links"
             >
               <a
-                href="/delivery-payment"
-                className="faq-footer-link h-[15px] w-[159px] shrink-0 underline decoration-solid [text-decoration-skip-ink:none] [text-underline-position:from-font]"
-                data-node-id="284:327"
-              >
-                Доставка та оплата
-              </a>
-              <a
-                href="/privacy-policy"
+                href={PRIVACY_POLICY_URL}
+                {...LEGAL_LINK_PROPS}
                 className="faq-footer-link h-[15px] w-[208px] shrink-0 underline decoration-solid [text-decoration-skip-ink:none] [text-underline-position:from-font]"
                 data-node-id="284:328"
               >
                 Політика конфіденційності
               </a>
               <a
-                href="/offer-agreement"
+                href={OFFER_AGREEMENT_URL}
+                {...LEGAL_LINK_PROPS}
                 className="faq-footer-link h-[16px] shrink-0 whitespace-nowrap underline decoration-solid [text-decoration-skip-ink:none] [text-underline-position:from-font]"
                 data-node-id="284:329"
               >
