@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import MobileFluidSection from '@/components/MobileFluidSection';
+import './mobile-steps.css';
 
 const ASSETS = {
   bubble: '/assets/mobile-block2-bubble.png',
@@ -35,16 +36,10 @@ function AssetImg({
   return <img alt={alt} className={className} src={src} />;
 }
 
-function StepDivider({ src, nodeId }: { src: string; nodeId: string }) {
+function StepConnector({ src, top, nodeId }: { src: string; top: string; nodeId: string }) {
   return (
-    <div className="absolute flex h-[calc(23.022*var(--mf))] w-0 items-center justify-center" data-node-id={nodeId}>
-      <div className="-rotate-90 flex-none">
-        <div className="relative h-0 w-[calc(23.022*var(--mf))]">
-          <div className="absolute inset-[calc(-1*var(--mf))_0_0_0]">
-            <AssetImg src={src} alt="" className="block size-full max-w-none" width={23.022} height={1} />
-          </div>
-        </div>
-      </div>
+    <div className="mobile-steps-connector" style={{ top }} data-node-id={nodeId}>
+      <AssetImg src={src} alt="" width={23.022} height={1} />
     </div>
   );
 }
@@ -68,7 +63,7 @@ export default function MobileStepsSection() {
 
       {/* Steps group — 312:1105 */}
       <div
-        className="absolute left-[calc(48*var(--mf))] top-[calc(84*var(--mf))] h-[calc(255.922*var(--mf))] w-[calc(291.25*var(--mf))]"
+        className="mobile-steps-group absolute left-[calc(48*var(--mf))] top-[calc(84*var(--mf))] h-[calc(255.922*var(--mf))] w-[calc(291.25*var(--mf))]"
         data-node-id="312:1105"
       >
         {/* Bubbles — 312:1125 */}
@@ -195,12 +190,18 @@ export default function MobileStepsSection() {
           </div>
         </div>
 
-        {/* Divider lines — 312:1124, 312:1123 */}
-        <div className="absolute left-[calc(142*var(--mf))] top-[calc(86.0234375*var(--mf))]">
-          <StepDivider src={ASSETS.line32} nodeId="312:1124" />
-        </div>
-        <div className="absolute left-[calc(142*var(--mf))] top-[calc(197.0234375*var(--mf))]">
-          <StepDivider src={ASSETS.line33} nodeId="312:1123" />
+        {/* Divider lines — shared vertical axis at --steps-connector-x */}
+        <div className="mobile-steps-connectors" aria-hidden>
+          <StepConnector
+            src={ASSETS.line32}
+            top="calc(86.0234375 * var(--mf))"
+            nodeId="312:1124"
+          />
+          <StepConnector
+            src={ASSETS.line33}
+            top="calc(197.0234375 * var(--mf))"
+            nodeId="312:1123"
+          />
         </div>
       </div>
     </MobileFluidSection>

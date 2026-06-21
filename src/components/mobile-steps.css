@@ -1,0 +1,31 @@
+/* Mobile steps block — shared connector axis */
+
+.mobile-steps-group {
+  --steps-connector-x: calc(142 * var(--mf));
+}
+
+.mobile-steps-connectors {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.mobile-steps-connector {
+  position: absolute;
+  left: var(--steps-connector-x);
+  width: calc(1 * var(--mf));
+  height: calc(23.022 * var(--mf));
+  transform: translateX(-50%);
+}
+
+.mobile-steps-connector img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: block;
+  width: calc(23.022 * var(--mf));
+  height: calc(1 * var(--mf));
+  max-width: none;
+  transform: translate(-50%, -50%) rotate(90deg);
+  transform-origin: center center;
+}
