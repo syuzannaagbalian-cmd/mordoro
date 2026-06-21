@@ -103,7 +103,7 @@ export default function FaqFooterSection() {
 
   return (
     <section
-      className="relative mx-auto w-[1440px] min-h-[765px] overflow-x-clip bg-[#e1e0e7]"
+      className="desktop-block desktop-block--faq relative mx-auto overflow-x-clip bg-[#e1e0e7]"
       data-node-id="284:272"
       aria-label="FAQ and footer"
     >
@@ -141,10 +141,10 @@ export default function FaqFooterSection() {
       </div>
 
       <div
-        className="relative z-10 box-border pb-[61.949px] pl-[73.4453125px] pr-[93.4756875px] pt-[161px]"
+        className="desktop-block-faq-inner relative z-10 box-border pl-[73.4453125px] pr-[93.4756875px]"
         data-node-id="284:297"
       >
-        <div className="flex w-[1273.079px] flex-col gap-[181px]">
+        <div className="desktop-block-faq-stack flex w-[1273.079px] flex-col">
           <div
             className="relative ml-[14.5943603515625px] inline-grid shrink-0 grid-cols-[max-content] grid-rows-[max-content] place-items-start leading-[0]"
             data-node-id="284:298"

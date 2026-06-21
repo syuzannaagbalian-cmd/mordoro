@@ -68,10 +68,11 @@ export default function SocialProofSection() {
 
   return (
     <section
-      className="relative mx-auto h-[592px] w-[1440px] overflow-hidden bg-[#e1e0e7]"
+      className="desktop-block desktop-block--social"
       data-node-id="284:243"
       aria-label="Morldoro social proof"
     >
+      <div className="desktop-block-canvas relative overflow-hidden bg-[#e1e0e7]">
       {/* Decorative bubbles */}
       <div className="pointer-events-none absolute left-[31px] top-[72px] h-[467px] w-[857px]" data-node-id="284:244">
         <BubbleCard
@@ -175,6 +176,7 @@ export default function SocialProofSection() {
             </button>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

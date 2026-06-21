@@ -152,10 +152,10 @@ export default function HeroMobile() {
               {/* Badge — 312:1032 / 322:156 */}
               <div className="relative inline-grid shrink-0 grid-cols-[max-content] grid-rows-[max-content] place-items-start" data-node-id="312:1032">
                 <div
-                  className="col-start-1 row-start-1 ml-0 mt-0 flex h-[calc(30.4*var(--mf))] w-[calc(209*var(--mf))] flex-col items-start justify-center rounded-[calc(14.44*var(--mf))] border-[calc(0.76*var(--mf))] border-solid border-[rgba(0,25,160,0.73)] pb-[calc(8*var(--mf))] pl-[calc(13*var(--mf))] pr-[calc(18*var(--mf))] pt-[calc(9*var(--mf))]"
+                  className="hero-mobile-badge col-start-1 row-start-1 ml-0 mt-0 flex flex-col items-center justify-center rounded-[calc(14.44*var(--mf))] border-[calc(0.76*var(--mf))] border-solid border-[rgba(0,25,160,0.73)] px-[calc(18*var(--mf))] py-[calc(9*var(--mf))]"
                   data-node-id="322:156"
                 >
-                  <div className="flex shrink-0 items-center gap-[calc(11*var(--mf))]" data-node-id="322:155">
+                  <div className="hero-mobile-badge-row flex shrink-0 items-center gap-[calc(11*var(--mf))]" data-node-id="322:155">
                     <span className="relative h-[calc(13.6*var(--mf))] w-[calc(12.92*var(--mf))] shrink-0" data-node-id="312:1035">
                       <AssetImg
                         src={ASSETS.badgeIcon}
@@ -166,7 +166,7 @@ export default function HeroMobile() {
                       />
                     </span>
                     <p
-                      className="font-helvetica-neue-cyr--roman m-0 flex h-[calc(7.2*var(--mf))] w-[calc(154.28*var(--mf))] items-center text-[calc(9.12*var(--mf))] not-italic uppercase leading-normal text-[#001ba5]"
+                      className="hero-mobile-badge-text font-helvetica-neue-cyr--roman m-0 flex items-center justify-center not-italic uppercase leading-none text-[#001ba5]"
                       data-node-id="312:1033"
                     >
                       антистрес нового покоління
