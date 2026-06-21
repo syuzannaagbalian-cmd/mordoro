@@ -26,7 +26,7 @@ body {
   background-color: #e3e2ed;
 }
 
-/* ── Responsive layout shells (mobile Figma frame = 390px) ── */
+/* ── Responsive layout shells: mobile ≤767px, desktop ≥768px ── */
 
 .site-main {
   width: 100%;
@@ -44,7 +44,7 @@ body {
 
 .site-layout--mobile > section,
 .site-layout--mobile > .hero-mobile {
-  max-width: min(390px, 100%);
+  max-width: 100%;
   margin-inline: auto;
   overflow-x: clip;
 }
@@ -53,7 +53,7 @@ body {
   display: none;
 }
 
-@media (min-width: 391px) {
+@media (min-width: 768px) {
   .site-layout--mobile {
     display: none;
   }
@@ -65,7 +65,7 @@ body {
   }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 767px) {
   body {
     background-color: #e1e0e7;
   }
